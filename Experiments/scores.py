@@ -114,16 +114,16 @@ def calculate_scores_l2fm(U, m, X_train, y_train, K, inv_K):
         score = 0
         t = 1 if m.predict(U[i].reshape(-1, 1))[0] >= 0.5 else -1
         
-        for j in range(X_train.shape[0]):
-            a = K[j]
+        for j in range(U.shape[0]):
+            a = np.zeros((X_train.shape[0], 1))
     
-#             for k in range(inv_K.shape[0]):
-#                 a[k] = m.kern.K_of_r(np.linalg.norm(X_train[k] - X_train[j])) + np.random.uniform(0, 1e-8, 1)
+            for k in range(inv_K.shape[0]):
+                 a[k] = m.kern.K_of_r(np.linalg.norm(X_train[k] - U[j])) + np.random.uniform(0, 1e-8, 1)
             
             a_t_inv_K = np.dot(np.transpose(a), inv_K)
             aKa = np.dot(a_t_inv_K, a)
             
-            diff = aKa - m.kern.K_of_r(np.linalg.norm(X_train[j] - U[i]))
+            diff = aKa - m.kern.K_of_r(np.linalg.norm(U[j] - U[i]))
             diff *= np.dot(a_t_inv_K, y_train) - t
             diff /= b - aKa
             

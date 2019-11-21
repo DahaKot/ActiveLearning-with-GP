@@ -1,0 +1,44 @@
+\documentclass{llncs}
+
+\usepackage[utf8x]{inputenc}
+\usepackage[english,russian]{babel}
+\usepackage{cmap}
+\usepackage{dsfont}
+\usepackage{amsmath}
+\usepackage{comment}
+\usepackage{graphicx}
+\usepackage{caption}
+
+\pagestyle{plain}
+
+\title{Гауссовские процессы для активного \\ обучения в задаче классификации}
+\author{Дарья Котова\inst{1}, Максим Панов\inst{2}}
+\institute{1: Московский физико-технический институт (ГУ) \\ \email{kotova.ds@phystech.edu} \\
+2: Сколковский институт науки и технологий \\ \email{m.panov@skoltech.ru}}
+%\email {kotova.ds@phystech.edu}, 
+%\inst{2} Сколковский институт науки и технологий
+%\email {m.panov@skoltech.ru}}
+
+\begin{document}
+
+Let $\mathcal{L} = (x_1, ..., x_n)$ -- training data with labels $(y_1, y_n)$ and $\mathcal{U}$ -- set of examples models doesn't know labels for. Let $f$ -- function, interpolating training dataset, with minimum norm (this condition is gotten from the experiments -- such models usually have good interpolating properties. Let's define $f_t^u(x)$ - as minimum-norn function that interpolates training data combined with the point $u \in \mathcal{U}$ with label $t$. The label $t(u)$ we will choose by one of these ways:
+\begin{equation}\label{t}
+t^{(1)}(u) = argmin_{t\in\{-1,1\}}\|f_t^u(x)\|, \ t^{(2)}(u) = 
+ \begin{cases}
+   +1 \ \text{if} \ f(u) \geq 0, 
+   \\
+   -1  \ \text{if} \ f(u) < 0
+ \end{cases}
+\end{equation}
+Defined $t(u)$, let $f^u(x) = f^u_{t(u)}(x)$. Introduce also $score$-functions:
+\begin{equation}\label{score}
+score^{(1)}(u) = \|f^u(x)\|, \ score^{(2)}(u) = \|f^u(x)-f(x)\|,
+\end{equation}
+In the first case the most $score$ get the least smooth function, in the second case -- the function, that differs the most from previous one. We expect that point with the largest $score$ is the most imformative.\\
+Then the next point for labeling is $$u^* = argmax_{u \in \mathcal{U}} score(u).$$
+In \eqref{t} и \eqref{score} we intentionally do not define specific norm for variety of $score$-functions. If these norms are the same and we chose the first $score$-function, then the new point $u^*$ can be determined by
+\begin{equation}
+\|f^{u^*}(x)\| = max_{u \in \mathcal{U}}min_{t\in\{-1,1\}} \|f_t^u(x) \|.
+\end{equation}
+
+\end{document}

@@ -5,80 +5,37 @@ import utils
 lik = GPy.likelihoods.Bernoulli()
 
 def calculate_scores_rand(U, m, X_train, y_train, K, inv_K):
-    return np.random.rand(len(U))
+    return (np.random.rand(len(U))).reshape(-1, 1)
     
 def calculate_scores_vari(U, m, X_train, y_train, K, inv_K):
-    max_score = m._raw_predict(U[0].reshape(-1, 1))[1]
-    max_ind = 0
-    scores = []
-    
-    for i in range(len(U)):
-        if max_score < m._raw_predict(U[i].reshape(-1, 1))[1]:
-            max_score = m._raw_predict(U[i].reshape(-1, 1))[1]
-            max_ind = i
-            
-        scores.append(m._raw_predict(U[i].reshape(-1, 1))[1][0])
-    
-    return scores
+    return m._raw_predict(U.reshape(-1, 1))[1]
     
 def calculate_scores_RKHS(U, m, X_train, y_train, K, inv_K):
-    max_score = -1
-    max_ind = 0
-    scores = []
+    b = np.full(U.shape, m.kern.K_of_r(0))
+    A = m.kern.K(U, X_train).T
     
-    b = float(m.kern.K_of_r(0))
-    a = np.zeros((X_train.shape[0], 1))
-    y = y_train
+    t = np.array([1 if x[0] >= 0.5 else -1 for x in m.predict(U)[0]])
+    
+    K_1A = np.dot(inv_K, A)
+    f_u = np.dot(np.transpose(y_train), K_1A)
+    t_f_u = np.multiply(t, f_u)
 
-    for j in range(len(U)):
-        for i in range(X_train.shape[0]):
-            a[i] = m.kern.K_of_r(np.linalg.norm(X_train[i] - U[j]))
-            
-        t = 1 if m.predict(U[j].reshape(-1, 1))[0][0] >= 0.5 else -1
-        
-        f_u = np.dot(np.transpose(y), np.dot(inv_K, a))
+    aKa = np.expand_dims(np.diagonal(np.dot(A.T, K_1A)), 1)
 
-        score = (1 - t * f_u[0]) ** 2 / (b - np.dot(np.transpose(a), np.dot(inv_K, a)))
-        score = score[0]
-        
-        if max_score < score:
-            max_score = score
-            max_ind = j
-        scores.append(score)
-
-    return scores
+    return np.divide((np.ones(t_f_u.shape) - t_f_u) ** 2, (b - aKa).T).T
     
 def calculate_scores_Hvar(U, m, X_train, y_train, K, inv_K):
-    max_score = -1
-    max_ind = 0
-    scores = []
-    
-    b = float(m.kern.K_of_r(0))
-    a = np.zeros((X_train.shape[0], 1))
-    y = y_train
+    A = m.kern.K(U, X_train)
 
-    for j in range(len(U)):
-        for i in range(X_train.shape[0]):
-            a[i] = m.kern.K_of_r(np.linalg.norm(X_train[i] - U[j]))
-            
-        t = 1 if m.predict(U[j].reshape(-1, 1))[0][0] >= 0.5 else -1
-        
-        f_u = np.dot(np.transpose(y), np.dot(inv_K, a))
-        
-        #lets try to eliminate demoninator
-        score = (1 - t * f_u[0]) ** 2
-        score = score[0]
-        
-        if max_score < score:
-            max_score = score
-            max_ind = j
-        scores.append(score)
+    t = np.array([1 if x[0] >= 0.5 else -1 for x in m.predict(U)[0]])
 
-    return scores
+    K_1A = np.dot(inv_K, A.T)
+    f_u = np.dot(np.transpose(y_train), K_1A)
+    t_f_u = np.multiply(t, f_u)
+
+    return ((np.ones(t_f_u.shape) - t_f_u) ** 2).T
     
 def calculate_scores_sqsm(U, m, X_train, y_train, K, inv_K):
-    max_score = -1
-    max_ind = 0
     scores = []
     
     for i in range(U.shape[0]):
@@ -96,16 +53,12 @@ def calculate_scores_sqsm(U, m, X_train, y_train, K, inv_K):
         prediction = m.predict(U.reshape(-1, 1))[0]
          
         score = np.linalg.norm(prediction_v - prediction)
-            
-        if max_score < score:
-            max_score = score
-            max_ind = i
+
         scores.append(score)
         
-    return scores
+    return np.array(scores).reshape(-1, 1)
 
 def calculate_scores_l2fm(U, m, X_train, y_train, K, inv_K):
-    max_score = -1
     scores = []
         
     b = m.kern.K_of_r(0)
@@ -115,10 +68,10 @@ def calculate_scores_l2fm(U, m, X_train, y_train, K, inv_K):
         t = 1 if m.predict(U[i].reshape(-1, 1))[0] >= 0.5 else -1
         
         for j in range(U.shape[0]):
-            a = np.zeros((X_train.shape[0], 1))
+            a = np.zeros((X_train.shape[0],1))
     
             for k in range(inv_K.shape[0]):
-                 a[k] = m.kern.K_of_r(np.linalg.norm(X_train[k] - U[j])) + np.random.uniform(0, 1e-8, 1)
+                a[k] = m.kern.K_of_r(np.linalg.norm(X_train[k] - U[j])) + np.random.uniform(0, 1e-8, 1)
             
             a_t_inv_K = np.dot(np.transpose(a), inv_K)
             aKa = np.dot(a_t_inv_K, a)
@@ -131,8 +84,6 @@ def calculate_scores_l2fm(U, m, X_train, y_train, K, inv_K):
             
         score = np.sqrt(score)
 
-        if max_score < score:
-            max_score = score
         scores.append(score)
         
-    return scores
+    return np.array(scores).reshape(-1, 1)

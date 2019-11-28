@@ -33,7 +33,7 @@ There is a working file with description of what we are doing.
 
 \section{Gaussian Process}
 
-In this section we briefly review the definition of gaussian process and some important equations connected with it. A comprehensive overview of gaussian processes is presented in \cite{gp}. \\
+In this section we briefly review the definition of a Gaussian process and some important equations connected with it. A comprehensive overview of Gaussian processes is presented in \cite{gp}. \\
 {\em  Gaussian process} $f\left(x\right)$ -- stochastic process (a collection of random variables indexed by time or space), such that every finite collection of those random variables has a multivariate normal distribution. Here $x \in \mathbb{R}^D$, where $D$ - arbitrary natural number. \\
 Gaussian process is defined by mean and covariance functions. Often mean function is chosen as constant 0. We introduce the notation:
 \begin{align*}
@@ -58,11 +58,11 @@ where $*$ corresponds to the test set. With Bayes formula and some calculations 
 \left( f_{*} | X, X_{*}, f \right) \sim \mathcal{N} (\hat{f}, \hat{\sigma}^2),
 \end{EQA}
 \begin{align*}
-\text{where } \hat{f} & = K(X_{*}, X)K(X, X)^{-1}f \text{ -- mean function,} \\
-\hat{\sigma}^2 & = K(X_{*}, X_{*}) - K(X_{*},X)K(X, X)^{-1}K(X,X_{*})) \text{ -- covariance function.}
+\text{where } \hat{f} & = K(X_{*}, X)K(X, X)^{-1}f \text{ is the posterior mean function,} \\
+\hat{\sigma}^2 & = K(X_{*}, X_{*}) - K(X_{*},X)K(X, X)^{-1}K(X,X_{*})) \text{ is the posterior covariance function.}
 \end{align*} \\
 The reader can notice that interpretation of this result for covariance function is quite intuitive: $K(X_{*}, X_{*})$ is prior covariance and positive term, corresponding to new information, is substracted from prior knowledge.\\
-To sum up, in regression case gaussian process give us not only mean, but also variance -- the measure of uncertainty in a giving point. This property is advantage of gaussian proccess. However, we should point out that matrix inversion in \eqref{aposterior} is extremely time consuming.
+To sum up, in regression case Gaussian process give us not only mean, but also variance -- the measure of uncertainty in a giving point. This property is advantage of Gaussian proccess. However, we should point out that matrix inversion in \eqref{aposterior} is extremely time consuming.
 
 \section{Active Learning}
 
@@ -78,29 +78,8 @@ We will consider pool-based sampling, which assumes that there is a small set of
 In this work we tried different $g(u)$. As a reference we used the work \cite{av} where general criterion and some specific variants were introduced. Now we will consider results of this work.\\
 Let $f$ be the minimum norm function that interpolates labeles examples. Define $f_t^u(x)$ is the minimum norm interpolating function based on $\mathcal{L}$ and the point $u \in \mathcal{U}$. To get $f_t^u(x)$ we suppose that $u$ has label $t$ (since in supervised learning we have to have labeles for put points). Then our $g(u)$ can be presented as (both variants are possible):
 \begin{EQA}[c]\label{score}
-g(u) = \|f^u_t(v)\|, \ g(u) = \|f^u_t(v)-f(v)\|.
+g(u) = \|f^u_t(v)\| \ or \ g(u) = \|f^u_t(v)-f(v)\|.
 \end{EQA}
-%Пусть $f$ -- функция, интерполирующая примеры из тренировочного множества, с минимальной нормой (это условие получено из опытов \cite{minnorm} -- такие модели, как правило, имеют хорошие обощающие свойства). Определим $f_t^u(x)$ - как функцию, интерполирующую примеры из тренировочного множества, объединенного с точкой $u \in \mathcal{U}$ с меткой $t$, с минимальной нормой. Метку $t(u)$ будем выбирать одним из следующих способов:
-\begin{comment}
-\begin{equation}\label{t}
-t^{(1)}(u) = argmin_{t\in\{-1,1\}}\|f_t^u(x)\|, \ t^{(2)}(u) = 
- \begin{cases}
-   +1 \ \text{if} \ f(u) \geq 0, 
-   \\
-   -1  \ \text{if} \ f(u) < 0
- \end{cases}
-\end{equation}
-%Определив $t(u)$, положим $f^u(x) = f^u_{t(u)}(x)$. Введем так же $score$-функции:
-\begin{equation}\label{score}
-score^{(1)}(u) = \|f^u(x)\|, \ score^{(2)}(u) = \|f^u(x)-f(x)\|,
-\end{equation}
-%В первом случае больший $score$ получит менее гладкая функция, во втором -- та функция, которая наиболее сильно отличается от предыдущей интерполяции. Ожидается, что точка с большим $score$-ом наиболее информативная.\\
-%Тогда следующая точка для получения метки есть $$u^* = argmax_{u \in \mathcal{U}} score(u).$$
-%В выражениях \eqref{t} и \eqref{score} намеренно не определена конкретная норма для свободы в выборе различных вариаций $score$-функций. Если эти нормы выбраны одинаковы и выбрана первая $score$-функция, то новая точка $u^*$ выбирается такой, что
-\begin{equation}
-\|f^{u^*}(x)\| = max_{u \in \mathcal{U}}min_{t\in\{-1,1\}} \|f_t^u(x) \|.
-\end{equation}
-\end{comment}
 
 \section{Criteria}
 Here we compare 6 different ways to choose new point $u^*$ from unlabeled data $\mathcal{U}$. Having assumed that $u^* = \underset{u \in \mathcal{U}}{argmax} ( g(u))$, we change $g(u)$ and compare results.
@@ -186,10 +165,13 @@ t
 \end{pmatrix} - \vec{a}^TK^{-1}\vec{y} 
 	\\ 
 	& = & \frac{(\vec{a}^TK^{-1}\vec{a} - K(u,v))(\vec{a}^TK^{-1}\vec{y} - t)}{b - \vec{a}^TK^{-1}\vec{a}}.\\	
+\end{EQA}
+Finally, we get:
+\begin{EQA}
 g(u) & = & \|f^u_t(v)-f(v)\|_{\mathcal{U}} = \sqrt{\sum\limits_{v \in \mathcal{U}}(f^u_t(v)-f(v))^2} \\
 	& = & \sqrt{\sum\limits_{v \in \mathcal{U}}\left( 
 	\frac{(\vec{a}^TK^{-1}\vec{a} - K(u,v))(\vec{a}^TK^{-1}\vec{y} - t)}{b - \vec{a}^TK^{-1}\vec{a}}
-	\right)^2}
+	\right)^2}.
 \end{EQA}
 \end{enumerate}
 

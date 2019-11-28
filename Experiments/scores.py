@@ -3,14 +3,15 @@ import GPy
 import utils
 
 lik = GPy.likelihoods.Bernoulli()
+lengthscale = 0.05
 
-def calculate_scores_rand(U, m, X_train, y_train, K, inv_K):
+def calculate_scores_rand(U, m, X_train, y_train, inv_K):
     return (np.random.rand(len(U))).reshape(-1, 1)
     
-def calculate_scores_vari(U, m, X_train, y_train, K, inv_K):
+def calculate_scores_vari(U, m, X_train, y_train, inv_K):
     return m._raw_predict(U.reshape(-1, 1))[1]
     
-def calculate_scores_RKHS(U, m, X_train, y_train, K, inv_K):
+def calculate_scores_RKHS(U, m, X_train, y_train, inv_K):
     b = np.full(U.shape, m.kern.K_of_r(0))
     A = m.kern.K(U, X_train).T
     
@@ -24,7 +25,7 @@ def calculate_scores_RKHS(U, m, X_train, y_train, K, inv_K):
 
     return np.divide((np.ones(t_f_u.shape) - t_f_u) ** 2, (b - aKa).T).T
     
-def calculate_scores_Hvar(U, m, X_train, y_train, K, inv_K):
+def calculate_scores_Hvar(U, m, X_train, y_train, inv_K):
     A = m.kern.K(U, X_train)
 
     t = np.array([1 if x[0] >= 0.5 else -1 for x in m.predict(U)[0]])
@@ -35,7 +36,7 @@ def calculate_scores_Hvar(U, m, X_train, y_train, K, inv_K):
 
     return ((np.ones(t_f_u.shape) - t_f_u) ** 2).T
     
-def calculate_scores_sqsm(U, m, X_train, y_train, K, inv_K):
+def calculate_scores_sqsm(U, m, X_train, y_train, inv_K):
     scores = []
     
     for i in range(U.shape[0]):
@@ -58,32 +59,21 @@ def calculate_scores_sqsm(U, m, X_train, y_train, K, inv_K):
         
     return np.array(scores).reshape(-1, 1)
 
-def calculate_scores_l2fm(U, m, X_train, y_train, K, inv_K):
-    scores = []
-        
-    b = m.kern.K_of_r(0)
-    
-    for i in range(U.shape[0]):
-        score = 0
-        t = 1 if m.predict(U[i].reshape(-1, 1))[0] >= 0.5 else -1
-        
-        for j in range(U.shape[0]):
-            a = np.zeros((X_train.shape[0],1))
-    
-            for k in range(inv_K.shape[0]):
-                a[k] = m.kern.K_of_r(np.linalg.norm(X_train[k] - U[j])) + np.random.uniform(0, 1e-8, 1)
-            
-            a_t_inv_K = np.dot(np.transpose(a), inv_K)
-            aKa = np.dot(a_t_inv_K, a)
-            
-            diff = aKa - m.kern.K_of_r(np.linalg.norm(U[j] - U[i]))
-            diff *= np.dot(a_t_inv_K, y_train) - t
-            diff /= b - aKa
-            
-            score += diff ** 2
-            
-        score = np.sqrt(score)
+def calculate_scores_l2fm(U, m, X_train, y_train, inv_K):
+    b = np.full(U.shape, m.kern.K_of_r(0))
+    A = m.kern.K(U, X_train).T
 
-        scores.append(score)
-        
-    return np.array(scores).reshape(-1, 1)
+    AK_1 = np.dot(A.T, inv_K)
+    aKa = np.expand_dims(np.diagonal(np.dot(AK_1, A)), 1)
+
+    aKy = np.dot(AK_1, y_train)    
+    t = np.array([1 if x[0] >= 0.5 else -1 for x in m.predict(U)[0]]).reshape(-1, 1)
+    t = np.repeat(t, U.shape[0], axis = 1).T
+
+    multiplier = np.divide(aKy - t, b - aKa)
+
+    Kuv = m.kern.K(np.array(U), U)
+
+    diff = np.multiply(multiplier, aKa - Kuv)
+
+    return np.linalg.norm(diff, axis = 0)

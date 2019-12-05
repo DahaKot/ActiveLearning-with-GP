@@ -35,7 +35,7 @@ class Data(nn.Module):
     
     def generate_data(self):
         if self.ndim == 1:
-            self.k = GPy.kern.RBF(1, variance=self.var, lengthscale=self.lengthscale)
+            self.k = GPy.kern.RBF(self.ndim, variance=self.var, lengthscale=self.lengthscale)
             
             self.X = np.random.rand(self.total_n, 1)
 
@@ -49,12 +49,20 @@ class Data(nn.Module):
             
         elif self.ndim == 2:
             self.X, self.Y = make_blobs(np.array([self.total_n//2, self.total_n//2]), self.ndim, 
-                                        cluster_std=2, shuffle=True, random_state=42)
+                                        cluster_std = 3, center_box = (-20, 20), shuffle = True, random_state = 42)
             
             fig = plt.figure()
             ax = fig.add_subplot(111, projection='3d')
 
             ax.scatter(self.X.T[0], self.X.T[1], self.Y, zdir='z', s=20, c=None, depthshade=True)
+            
+            m = GPy.core.GP(X=self.X,
+                Y=self.Y.reshape(-1, 1), 
+                kernel=GPy.kern.RBF(self.ndim, variance=self.var, lengthscale=self.lengthscale), 
+                inference_method=GPy.inference.latent_function_inference.expectation_propagation.EP(),
+                likelihood=self.lik)
+
+            m.plot(plot_density = True)
 
         self.U, self.X_train, self.y_U, self.y_train = train_test_split(self.X, self.Y, test_size = self.start_n)
         self.U, self.X_test, self.y_U, self.y_test = train_test_split(self.X, self.Y, test_size = self.test_size)

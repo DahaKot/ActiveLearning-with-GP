@@ -38,12 +38,12 @@ def update_K(m, X_train, K, new_point, a):
 # attention! works for only one new_point
 def update_inv_K(m, X_train, inv_K, new_point, a):
     b = np.array([m.kern.K_of_r(0)])
-    
+
     atK_1 = np.matmul(np.transpose(a), inv_K)
     K_1a = np.matmul(inv_K, a)
         
     c = 1 / (b - np.matmul(atK_1, a))
-    
+
     inv_K = inv_K + c * np.matmul(K_1a, atK_1)
     
     inv_K = np.concatenate((inv_K, c*K_1a), axis = 1)
@@ -51,3 +51,9 @@ def update_inv_K(m, X_train, inv_K, new_point, a):
     inv_K = np.concatenate((inv_K, -c*atK_1), axis = 0)
     
     return inv_K
+
+def to_labels(a):
+    for i in range(len(a)):
+        a[i] = 1 if a[i][0] >= 0.5 else 0
+        
+    return a

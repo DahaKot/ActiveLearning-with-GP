@@ -55,14 +55,6 @@ class Data(nn.Module):
             ax = fig.add_subplot(111, projection='3d')
 
             ax.scatter(self.X.T[0], self.X.T[1], self.Y, zdir='z', s=20, c=None, depthshade=True)
-            
-            m = GPy.core.GP(X=self.X,
-                Y=self.Y.reshape(-1, 1), 
-                kernel=GPy.kern.RBF(self.ndim, variance=self.var, lengthscale=self.lengthscale), 
-                inference_method=GPy.inference.latent_function_inference.expectation_propagation.EP(),
-                likelihood=self.lik)
-
-            m.plot(plot_density = True)
 
         self.U, self.X_train, self.y_U, self.y_train = train_test_split(self.X, self.Y, test_size = self.start_n)
         self.U, self.X_test, self.y_U, self.y_test = train_test_split(self.X, self.Y, test_size = self.test_size)

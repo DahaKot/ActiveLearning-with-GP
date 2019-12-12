@@ -1,7 +1,7 @@
 #configure plotting
 get_ipython().run_line_magic('matplotlib', 'inline')
 get_ipython().run_line_magic('config', "InlineBackend.figure_format = 'svg'")
-import matplotlib;matplotlib.rcParams['figure.figsize'] = (4,2.5)
+import matplotlib;matplotlib.rcParams['figure.figsize'] = (16,10)
 import matplotlib;matplotlib.rcParams['text.usetex'] = True
 import matplotlib;matplotlib.rcParams['font.size'] = 8
 import matplotlib;matplotlib.rcParams['font.family'] = 'serif'
@@ -53,8 +53,9 @@ class Data(nn.Module):
             
             fig = plt.figure()
             ax = fig.add_subplot(111, projection='3d')
-
+            
             ax.scatter(self.X.T[0], self.X.T[1], self.Y, zdir='z', s=20, c=None, depthshade=True)
+            plt.savefig("InitialData.png")
 
         self.U, self.X_train, self.y_U, self.y_train = train_test_split(self.X, self.Y, test_size = self.start_n)
         self.U, self.X_test, self.y_U, self.y_test = train_test_split(self.X, self.Y, test_size = self.test_size)
@@ -62,24 +63,47 @@ class Data(nn.Module):
         return self.U, self.X_train, self.y_U, self.y_train, self.X_test, self.y_test
     
     def draw_score(self, scores, U, score_name, iteration, point, label):
-        scores = np.array(scores)
-        order = np.argsort(U, axis = 0)
+        if self.ndim == 1:
+            scores = np.array(scores)
+            order = np.argsort(U, axis = 0)
 
-        U = np.array(U)[order].reshape(-1, 1)
+            U = np.array(U)[order].reshape(-1, self.ndim)
+            scores = (np.array(scores)[order]).reshape(-1, 1)
 
-        scores = (np.array(scores)[order]).reshape(-1, 1)
+            plt.clf()
+            plt.plot(U, scores)
+            plt.plot(point, max(scores), 'go')
 
-        plt.clf()
-        plt.plot(U, scores)
-        plt.plot(point, max(scores), 'go')
+            open(score_name + str(iteration) + 'score' + '.png', 'w+')
+            plt.savefig(score_name + str(iteration) + 'score' + '.png')
 
-        open(score_name + str(iteration) + 'score' + '.png', 'w+')
-        plt.savefig(score_name + str(iteration) + 'score' + '.png')
+            plt.clf()
+            plt.plot(self.X, self.p, 'r.')
+            plt.plot(point, label, 'go')
 
-        plt.clf()
-        plt.plot(self.X, self.p, 'r.')
-        plt.plot(point, label, 'go')
+            open(score_name + str(iteration) + 'prob' + '.png', 'w+')
+            plt.savefig(score_name + str(iteration) + 'prob' + '.png')
+            
+        elif self.ndim == 2:
+            scores = np.array(scores).reshape(-1, 1)
+            U = np.array(U)
+            
+            plt.clf()
+            fig = plt.figure()
+            ax = fig.add_subplot(111, projection='3d')
+            
+            ax.scatter(U.T[0], U.T[1], scores)
+            ax.plot([point[0]], [point[1]], max(scores), markerfacecolor='r', marker='o', markersize=5, alpha=0.6)
 
-        open(score_name + str(iteration) + 'prob' + '.png', 'w+')
-        plt.savefig(score_name + str(iteration) + 'prob' + '.png')
+            open(score_name + str(iteration) + 'score' + '.png', 'w+')
+            plt.savefig(score_name + str(iteration) + 'score' + '.png')
 
+            plt.clf()
+            fig = plt.figure()
+            ax = fig.add_subplot(111, projection='3d')
+            
+            ax.scatter(self.X.T[0], self.X.T[1], self.Y.reshape(-1, 1))
+            ax.plot([point[0]], [point[1]], label, markerfacecolor='r', marker='o', markersize=5, alpha=0.6)
+            
+            open(score_name + str(iteration) + 'prob' + '.png', 'w+')
+            plt.savefig(score_name + str(iteration) + 'prob' + '.png')

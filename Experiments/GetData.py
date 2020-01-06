@@ -86,6 +86,8 @@ class Generated1dimData(Data):
 class Generated2dimData(Data):
     def __init__(self, total_n, start_n, end_n, test_size):
         super(Generated2dimData, self).__init__(2, total_n, start_n, end_n, test_size)
+        
+        self.n_points_to_show = 50
     
     def generate_data(self):
         self.X, self.Y = make_blobs(np.array([self.total_n//2, self.total_n//2]), self.ndim, 
@@ -102,31 +104,22 @@ class Generated2dimData(Data):
 
         return self.U, self.X_train, self.y_U, self.y_train, self.X_test, self.y_test
     
-    def draw_score(self, scores, U, score_name, iteration, point, label):
+    def draw_score(self, scores, U, score_name, iteration):
         scores = np.array(scores).reshape(-1, 1)
-        U = np.array(U)
 
         plt.clf()
-        fig = plt.figure()
-        ax = fig.add_subplot(111, projection='3d')
-
-        ax.scatter(U.T[0], U.T[1], scores)
-        ax.plot([point[0]], [point[1]], max(scores), markerfacecolor='r', marker='o', markersize=5, alpha=0.6)
-
-        open(score_name + str(iteration) + 'score' + '.png', 'w+')
+        plt.plot(U.T[0], U.T[1], 'bo')
+        
+        ind = scores.argsort(axis = 0)[-self.n_points_to_show:]
+        scores_to_show = scores[ind]
+        U_to_show = (U[ind]).reshape(-1, 2)
+        
+        plt.plot(U_to_show.T[0], U_to_show.T[1], 'ro')
+        
         plt.savefig(score_name + str(iteration) + 'score' + '.png')
-
-        plt.clf()
-        fig = plt.figure()
-        ax = fig.add_subplot(111, projection='3d')
-
-        ax.scatter(self.X.T[0], self.X.T[1], self.Y.reshape(-1, 1))
-        ax.plot([point[0]], [point[1]], label, markerfacecolor='r', marker='o', markersize=5, alpha=0.6)
-
-        open(score_name + str(iteration) + 'prob' + '.png', 'w+')
-        plt.savefig(score_name + str(iteration) + 'prob' + '.png')
         
 class HTRU_2(Data):
+
     def __init__(self, start_n, end_n, test_size):
         super(HTRU_2, self).__init__(0, 0, start_n, end_n, test_size)
     

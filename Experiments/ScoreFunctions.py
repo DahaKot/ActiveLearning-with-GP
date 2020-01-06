@@ -3,7 +3,7 @@ import GPy
 import Utils
 
 lik = GPy.likelihoods.Bernoulli()
-ndim = 8
+ndim = 2
 
 def calculate_scores_rand(U, m, X_train, y_train, inv_K):
     return (np.random.rand(len(U))).reshape(-1, 1)

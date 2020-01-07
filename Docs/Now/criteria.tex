@@ -177,33 +177,61 @@ g(u) & = & \|f^u_t(v)-f(v)\|_{\mathcal{U}} = \sqrt{\sum\limits_{v \in \mathcal{U
 
 \section{Experiments}
 
-We took 2 blobs of 2-dimensional points that consist 1000 points total. 400 of them went to the test set and training size was changing from 10 to 300 points. Figures below shows what points different score-functions tend to choose for cases when in the training set are 10, 100 and 200 points.
+We took 2 blobs of 2-dimensional points that consist 1000 points total. 400 of them went to the test set and training size was changing from 25 to 300 points. Figures below shows what points different score-functions tend to choose for cases when in the training set are 50, 75 and 100 points.
 
 \begin{figure}[h]
 \begin{minipage}[h]{0.49\linewidth}
-\center{\includegraphics[scale = 0.3]{10scorerand.png}} Rand
+\center{\includegraphics[scale = 0.3]{50scorerand.png}} Rand
 \end{minipage}
 \hfill
 \begin{minipage}[h]{0.49\linewidth}
-\center{\includegraphics[scale = 0.3]{10scorevari.png}} Vari
+\center{\includegraphics[scale = 0.3]{50scorevari.png}} Vari
 \end{minipage}
 \vfill
 \begin{minipage}[h]{0.49\linewidth}
-\center{\includegraphics[scale = 0.3]{10scoresqsm.png}} Sqsm
+\center{\includegraphics[scale = 0.3]{50scoresqsm.png}} Sqsm
 \end{minipage}
 \hfill
 \begin{minipage}[h]{0.49\linewidth}
-\center{\includegraphics[scale = 0.3]{10scoreRKHS.png}} RKHS
+\center{\includegraphics[scale = 0.3]{50scoreRKHS.png}} RKHS
 \end{minipage}
 \vfill
 \begin{minipage}[h]{0.49\linewidth}
-\center{\includegraphics[scale = 0.3]{10scoreHvar.png}} Hvar
+\center{\includegraphics[scale = 0.3]{50scoreHvar.png}} Hvar
 \end{minipage}
 \hfill
 \begin{minipage}[h]{0.49\linewidth}
-\center{\includegraphics[scale = 0.3]{10scorel2fm.png}} L2fm
+\center{\includegraphics[scale = 0.3]{50scorel2fm.png}} L2fm
 \end{minipage}
-\caption{Blue points - original data given to the model to choose next point from. Red points - 50 points with maximum score. Training set contains 10 points.}
+\caption{Blue points - original data given to the model to choose next point from. Red points - 25 points that were chosen. Training set contains 50 points.}
+\label{scoreplots}
+\end{figure}
+
+\begin{figure}[h]
+\begin{minipage}[h]{0.49\linewidth}
+\center{\includegraphics[scale = 0.3]{75scorerand.png}} Rand
+\end{minipage}
+\hfill
+\begin{minipage}[h]{0.49\linewidth}
+\center{\includegraphics[scale = 0.3]{75scorevari.png}} Vari
+\end{minipage}
+\vfill
+\begin{minipage}[h]{0.49\linewidth}
+\center{\includegraphics[scale = 0.3]{75scoresqsm.png}} Sqsm
+\end{minipage}
+\hfill
+\begin{minipage}[h]{0.49\linewidth}
+\center{\includegraphics[scale = 0.3]{75scoreRKHS.png}} RKHS
+\end{minipage}
+\vfill
+\begin{minipage}[h]{0.49\linewidth}
+\center{\includegraphics[scale = 0.3]{75scoreHvar.png}} Hvar
+\end{minipage}
+\hfill
+\begin{minipage}[h]{0.49\linewidth}
+\center{\includegraphics[scale = 0.3]{75scorel2fm.png}} L2fm
+\end{minipage}
+\caption{Blue points - original data given to the model to choose next point from. Red points - 25 points that were chosen. Training set contains 75 points.}
 \label{scoreplots}
 \end{figure}
 
@@ -231,35 +259,7 @@ We took 2 blobs of 2-dimensional points that consist 1000 points total. 400 of t
 \begin{minipage}[h]{0.49\linewidth}
 \center{\includegraphics[scale = 0.3]{100scorel2fm.png}} L2fm
 \end{minipage}
-\caption{Blue points - original data given to the model to choose next point from. Red points - 50 points with maximum score. Training set contains 100 points.}
-\label{scoreplots}
-\end{figure}
-
-\begin{figure}[h]
-\begin{minipage}[h]{0.49\linewidth}
-\center{\includegraphics[scale = 0.3]{200scorerand.png}} Rand
-\end{minipage}
-\hfill
-\begin{minipage}[h]{0.49\linewidth}
-\center{\includegraphics[scale = 0.3]{200scorevari.png}} Vari
-\end{minipage}
-\vfill
-\begin{minipage}[h]{0.49\linewidth}
-\center{\includegraphics[scale = 0.3]{200scoresqsm.png}} Sqsm
-\end{minipage}
-\hfill
-\begin{minipage}[h]{0.49\linewidth}
-\center{\includegraphics[scale = 0.3]{200scoreRKHS.png}} RKHS
-\end{minipage}
-\vfill
-\begin{minipage}[h]{0.49\linewidth}
-\center{\includegraphics[scale = 0.3]{200scoreHvar.png}} Hvar
-\end{minipage}
-\hfill
-\begin{minipage}[h]{0.49\linewidth}
-\center{\includegraphics[scale = 0.3]{200scorel2fm.png}} L2fm
-\end{minipage}
-\caption{Blue points - original data given to the model to choose next point from. Red points - 50 points with maximum score. Training set contains 200 points.}
+\caption{Blue points - original data given to the model to choose next point from. Red points - 25 points that were chosen. Training set contains 100 points.}
 \label{scoreplots}
 \end{figure}
 

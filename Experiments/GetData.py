@@ -87,7 +87,7 @@ class Generated2dimData(Data):
     def __init__(self, total_n, start_n, end_n, test_size):
         super(Generated2dimData, self).__init__(2, total_n, start_n, end_n, test_size)
         
-        self.n_points_to_show = 50
+        self.n_points_to_show = 20
     
     def generate_data(self):
         self.X, self.Y = make_blobs(np.array([self.total_n//2, self.total_n//2]), self.ndim, 
@@ -104,17 +104,20 @@ class Generated2dimData(Data):
 
         return self.U, self.X_train, self.y_U, self.y_train, self.X_test, self.y_test
     
-    def draw_score(self, scores, U, score_name, iteration):
+    def draw_score(self, scores, U, score_name, iteration, X_train):
         scores = np.array(scores).reshape(-1, 1)
 
         plt.clf()
         plt.plot(U.T[0], U.T[1], 'bo')
         
-        ind = scores.argsort(axis = 0)[-self.n_points_to_show:]
-        scores_to_show = scores[ind]
-        U_to_show = (U[ind]).reshape(-1, 2)
+#         ind = scores.argsort(axis = 0)[-self.n_points_to_show:]
+#         scores_to_show = scores[ind]
+#         U_to_show = (U[ind]).reshape(-1, 2)
+        X_init = X_train[:self.n_points_to_show]
+        X_recent = X_train[-self.n_points_to_show:]
         
-        plt.plot(U_to_show.T[0], U_to_show.T[1], 'ro')
+        plt.plot(X_init.T[0], X_init.T[1], 'g+')
+        plt.plot(X_recent.T[0], X_recent.T[1], 'ro')
         
         plt.savefig(score_name + str(iteration) + 'score' + '.png')
         

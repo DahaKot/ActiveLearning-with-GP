@@ -10,6 +10,7 @@ import GPy
 import numpy as np
 import torch.nn as nn
 from matplotlib import pyplot as plt
+from mpl_toolkits.mplot3d import Axes3D
 np.random.seed(1)
 
 from tqdm import tqdm_notebook as tqdm
@@ -106,18 +107,33 @@ class Generated2dimData(Data):
     
     def draw_score(self, scores, U, score_name, iteration, X_train):
         scores = np.array(scores).reshape(-1, 1)
+        
+        fig = plt.figure()
+        ax = fig.add_subplot(111, projection='3d')
+        
+#         print(U.shape)
+#         print(U)
+#         ind_1 = U.argsort(axis = 0).T[0]
+#         print(U[ind_1].shape)
+#         print(U[ind_1])
+#         ind_2 = U[ind_1].argsort(axis = 0).T[1]
+#         print(U[ind_1][ind_2].shape)
+#         print(U[ind_1][ind_2])
+        
+#         U = U.T[ind_1][ind_2]
+        ax.scatter(U.T[0], U.T[1], scores)
 
-        plt.clf()
-        plt.plot(U.T[0], U.T[1], 'bo')
+#         plt.clf()
+#         plt.plot(U.T[0], U.T[1], 'bo')
         
-#         ind = scores.argsort(axis = 0)[-self.n_points_to_show:]
-#         scores_to_show = scores[ind]
-#         U_to_show = (U[ind]).reshape(-1, 2)
-        X_init = X_train[:self.n_points_to_show]
-        X_recent = X_train[-self.n_points_to_show:]
+# #         ind = scores.argsort(axis = 0)[-self.n_points_to_show:]
+# #         scores_to_show = scores[ind]
+# #         U_to_show = (U[ind]).reshape(-1, 2)
+#         X_init = X_train[:self.n_points_to_show]
+#         X_recent = X_train[-self.n_points_to_show:]
         
-        plt.plot(X_init.T[0], X_init.T[1], 'g+')
-        plt.plot(X_recent.T[0], X_recent.T[1], 'ro')
+#         plt.plot(X_init.T[0], X_init.T[1], 'g+')
+#         plt.plot(X_recent.T[0], X_recent.T[1], 'ro')
         
         plt.savefig(score_name + str(iteration) + 'score' + '.png')
         

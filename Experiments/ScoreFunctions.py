@@ -6,7 +6,7 @@ lik = GPy.likelihoods.Bernoulli()
 ndim = 2
 
 def calculate_scores_rand(U, m, X_train, y_train, inv_K):
-    return (np.random.rand(len(U))).reshape(-1, 1)
+    return (np.random.rand(U.reshape(-1, ndim).shape[0])).reshape(-1, 1)
     
 def calculate_scores_vari(U, m, X_train, y_train, inv_K):
     return m._raw_predict(U.reshape(-1, ndim))[1]

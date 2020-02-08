@@ -16,8 +16,10 @@ np.random.seed(1)
 from tqdm import tqdm_notebook as tqdm
 
 from sklearn.model_selection import train_test_split
-from sklearn.datasets import make_blobs
+from sklearn.datasets import make_classification
 import pandas as pd
+
+import ScoreFunctions
 
 class Data(nn.Module):
     def __init__(self, ndim, total_n, start_n, end_n, test_size):
@@ -91,8 +93,10 @@ class Generated2dimData(Data):
         self.n_points_to_show = 20
     
     def generate_data(self):
-        self.X, self.Y = make_blobs(np.array([self.total_n//2, self.total_n//2]), self.ndim, 
-                                        cluster_std = 3, center_box = (-20, 20), shuffle = True, random_state = 42)
+#         self.X, self.Y = make_blobs(np.array([self.total_n//2, self.total_n//2]), self.ndim, 
+#                                         cluster_std = 5, center_box = (-30, 30), shuffle = True, random_state = 42)
+        self.X, self.Y = make_classification(n_samples=self.total_n, n_features=2, n_classes=2, n_redundant = 0,
+                                             n_clusters_per_class=2, class_sep=1.0, scale=1.0, shuffle=True, random_state=42)
             
         fig = plt.figure()
         ax = fig.add_subplot(111, projection='3d')
@@ -105,11 +109,24 @@ class Generated2dimData(Data):
 
         return self.U, self.X_train, self.y_U, self.y_train, self.X_test, self.y_test
     
-    def draw_score(self, scores, U, score_name, iteration, X_train):
-        scores = np.array(scores).reshape(-1, 1)
+    def draw_score(self, m, U, score_name, iteration, X_train, score, y_train, inv_K):
+        x, y = np.mgrid[-5:5, -5:5]
+        xy = np.array(np.meshgrid(range(-5, 5), range(-5, 5))).T.reshape(-1,2)
+        z = score(xy, m, X_train, y_train, inv_K)
+        
+        plt.hold(True)
+#         print(np.array([x, y]).shape)
+#         print(x.shape, y.shape, z.shape)
         
         fig = plt.figure()
         ax = fig.add_subplot(111, projection='3d')
+        
+        ax.scatter(self.X.T[0], self.X.T[1], self.Y*max(z), zdir='z', s=20, c=None, depthshade=True)
+        ax.plot_surface(x, y, z.reshape(10, 10), cmap='inferno', alpha = 0.4)
+#         scores = np.array(scores).reshape(-1, 1)
+        
+#         fig = plt.figure()
+#         ax = fig.add_subplot(111, projection='3d')
         
 #         print(U.shape)
 #         print(U)
@@ -121,7 +138,7 @@ class Generated2dimData(Data):
 #         print(U[ind_1][ind_2])
         
 #         U = U.T[ind_1][ind_2]
-        ax.scatter(U.T[0], U.T[1], scores)
+#         ax.scatter(U.T[0], U.T[1], scores)
 
 #         plt.clf()
 #         plt.plot(U.T[0], U.T[1], 'bo')

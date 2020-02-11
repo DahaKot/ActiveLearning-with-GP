@@ -110,11 +110,14 @@ class Generated2dimData(Data):
         return self.U, self.X_train, self.y_U, self.y_train, self.X_test, self.y_test
     
     def draw_score(self, m, U, score_name, iteration, X_train, score, y_train, inv_K):
-        x, y = np.mgrid[-5:5, -5:5]
-        xy = np.array(np.meshgrid(range(-5, 5), range(-5, 5))).T.reshape(-1,2)
-        z = score(xy, m, X_train, y_train, inv_K)
+        points = np.array(np.meshgrid(np.linspace(-5, 5, 100), np.linspace(-5, 5, 100)))
         
-        plt.hold(True)
+        x, y = points[1], points[0]
+
+        xy = points.T.reshape(-1,2)
+        z = np.log(score(xy, m, X_train, y_train, inv_K))
+        
+#         plt.hold(True)
 #         print(np.array([x, y]).shape)
 #         print(x.shape, y.shape, z.shape)
         
@@ -122,7 +125,7 @@ class Generated2dimData(Data):
         ax = fig.add_subplot(111, projection='3d')
         
         ax.scatter(self.X.T[0], self.X.T[1], self.Y*max(z), zdir='z', s=20, c=None, depthshade=True)
-        ax.plot_surface(x, y, z.reshape(10, 10), cmap='inferno', alpha = 0.4)
+        ax.plot_surface(x, y, z.reshape(100, 100), cmap='inferno', alpha = 0.4)
 #         scores = np.array(scores).reshape(-1, 1)
         
 #         fig = plt.figure()

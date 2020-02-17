@@ -92,10 +92,11 @@ class Generated2dimData(Data):
         super(Generated2dimData, self).__init__(2, total_n, start_n, end_n, test_size)
         
         self.n_points_to_show = 20
+        self.n_points_per_axes = 500
     
     def generate_data(self):
         self.X, self.Y = make_blobs(np.array([self.total_n//2, self.total_n//2]), self.ndim, 
-                                        cluster_std = 5, center_box = (-5, 5), shuffle = True, random_state = 42)
+                                        cluster_std = 3, center_box = (-10, 10), shuffle = False, random_state = 2)
 #         self.X, self.Y = make_classification(n_samples=self.total_n, n_features=2, n_classes=2, n_redundant = 0,
 #                                              n_clusters_per_class=2, class_sep=1.0, scale=1.0, shuffle=True, random_state=42)
             
@@ -111,7 +112,7 @@ class Generated2dimData(Data):
         return self.U, self.X_train, self.y_U, self.y_train, self.X_test, self.y_test
     
     def draw_score(self, m, U, score_name, iteration, X_train, score, y_train, inv_K):
-        points = np.array(np.meshgrid(np.linspace(-15, 15, 1000), np.linspace(-15, 15, 1000)))
+        points = np.array(np.meshgrid(np.linspace(-20, 20, self.n_points_per_axes), np.linspace(-20, 20, self.n_points_per_axes)))
         
         x, y = points[1], points[0]
 
@@ -126,7 +127,7 @@ class Generated2dimData(Data):
         ax = fig.add_subplot(111, projection='3d')
         
         ax.scatter(self.X.T[0], self.X.T[1], self.Y*max(z), zdir='z', s=20, c=None, depthshade=True)
-        ax.plot_surface(x, y, z.reshape(1000, 1000), cmap='inferno', alpha = 0.4)
+        ax.plot_surface(x, y, z.reshape(self.n_points_per_axes, self.n_points_per_axes), cmap='inferno', alpha = 0.4)
 #         scores = np.array(scores).reshape(-1, 1)
         
 #         fig = plt.figure()
@@ -161,8 +162,9 @@ class Generated2dimData(Data):
         z = z.reshape(points.shape[1], -1)
 
         plt.clf()
-        plt.plot(X_train.T[0], X_train.T[1], 'bo')
-        plt.contour(np.linspace(-15, 15, 1000), np.linspace(-15, 15, 1000), z)
+        plt.plot(self.X[0:self.total_n//2].T[0], self.X[0:self.total_n//2].T[1], 'bo', alpha = 0.1)
+        plt.plot(self.X[self.total_n//2:-1].T[0], self.X[self.total_n//2:-1].T[1], 'ro', alpha = 0.1)
+        plt.contour(np.linspace(-20, 20, self.n_points_per_axes), np.linspace(-20, 20, self.n_points_per_axes), z)
         plt.savefig(score_name + str(iteration) + 'contour' + '.png')
         
 class HTRU_2(Data):

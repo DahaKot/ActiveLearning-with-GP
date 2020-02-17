@@ -16,6 +16,7 @@ np.random.seed(1)
 from tqdm import tqdm_notebook as tqdm
 
 from sklearn.model_selection import train_test_split
+from sklearn.datasets import make_blobs
 from sklearn.datasets import make_classification
 import pandas as pd
 
@@ -93,10 +94,10 @@ class Generated2dimData(Data):
         self.n_points_to_show = 20
     
     def generate_data(self):
-#         self.X, self.Y = make_blobs(np.array([self.total_n//2, self.total_n//2]), self.ndim, 
-#                                         cluster_std = 5, center_box = (-30, 30), shuffle = True, random_state = 42)
-        self.X, self.Y = make_classification(n_samples=self.total_n, n_features=2, n_classes=2, n_redundant = 0,
-                                             n_clusters_per_class=2, class_sep=1.0, scale=1.0, shuffle=True, random_state=42)
+        self.X, self.Y = make_blobs(np.array([self.total_n//2, self.total_n//2]), self.ndim, 
+                                        cluster_std = 5, center_box = (-5, 5), shuffle = True, random_state = 42)
+#         self.X, self.Y = make_classification(n_samples=self.total_n, n_features=2, n_classes=2, n_redundant = 0,
+#                                              n_clusters_per_class=2, class_sep=1.0, scale=1.0, shuffle=True, random_state=42)
             
         fig = plt.figure()
         ax = fig.add_subplot(111, projection='3d')
@@ -110,7 +111,7 @@ class Generated2dimData(Data):
         return self.U, self.X_train, self.y_U, self.y_train, self.X_test, self.y_test
     
     def draw_score(self, m, U, score_name, iteration, X_train, score, y_train, inv_K):
-        points = np.array(np.meshgrid(np.linspace(-5, 5, 100), np.linspace(-5, 5, 100)))
+        points = np.array(np.meshgrid(np.linspace(-15, 15, 1000), np.linspace(-15, 15, 1000)))
         
         x, y = points[1], points[0]
 
@@ -125,7 +126,7 @@ class Generated2dimData(Data):
         ax = fig.add_subplot(111, projection='3d')
         
         ax.scatter(self.X.T[0], self.X.T[1], self.Y*max(z), zdir='z', s=20, c=None, depthshade=True)
-        ax.plot_surface(x, y, z.reshape(100, 100), cmap='inferno', alpha = 0.4)
+        ax.plot_surface(x, y, z.reshape(1000, 1000), cmap='inferno', alpha = 0.4)
 #         scores = np.array(scores).reshape(-1, 1)
         
 #         fig = plt.figure()
@@ -156,6 +157,13 @@ class Generated2dimData(Data):
 #         plt.plot(X_recent.T[0], X_recent.T[1], 'ro')
         
         plt.savefig(score_name + str(iteration) + 'score' + '.png')
+
+        z = z.reshape(points.shape[1], -1)
+
+        plt.clf()
+        plt.plot(X_train.T[0], X_train.T[1], 'bo')
+        plt.contour(np.linspace(-15, 15, 1000), np.linspace(-15, 15, 1000), z)
+        plt.savefig(score_name + str(iteration) + 'contour' + '.png')
         
 class HTRU_2(Data):
 

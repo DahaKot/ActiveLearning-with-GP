@@ -92,13 +92,11 @@ class Generated2dimData(Data):
         super(Generated2dimData, self).__init__(2, total_n, start_n, end_n, test_size)
         
         self.n_points_to_show = 20
-        self.n_points_per_axes = 500
+        self.n_points_per_axes = 100
     
     def generate_data(self):
         self.X, self.Y = make_blobs(np.array([self.total_n//2, self.total_n//2]), self.ndim, 
                                         cluster_std = 3, center_box = (-10, 10), shuffle = False, random_state = 2)
-#         self.X, self.Y = make_classification(n_samples=self.total_n, n_features=2, n_classes=2, n_redundant = 0,
-#                                              n_clusters_per_class=2, class_sep=1.0, scale=1.0, shuffle=True, random_state=42)
             
         fig = plt.figure()
         ax = fig.add_subplot(111, projection='3d')
@@ -112,60 +110,56 @@ class Generated2dimData(Data):
         return self.U, self.X_train, self.y_U, self.y_train, self.X_test, self.y_test
     
     def draw_score(self, m, U, score_name, iteration, X_train, score, y_train, inv_K):
+        # creating grid for further plots
         points = np.array(np.meshgrid(np.linspace(-20, 20, self.n_points_per_axes), np.linspace(-20, 20, self.n_points_per_axes)))
-        
         x, y = points[1], points[0]
-
         xy = points.T.reshape(-1,2)
-        z = np.log(score(xy, m, X_train, y_train, inv_K))
         
-#         plt.hold(True)
-#         print(np.array([x, y]).shape)
-#         print(x.shape, y.shape, z.shape)
+        # 3-d plot of score-function
+        z = score(xy, m, X_train, y_train, inv_K)
+        np.savetxt("./scores/" + str(score)[27:31] + "/" + str(iteration) + ".txt", z)
+        z = np.log(abs(z))
+        probability = m.predict(xy)[0]
         
         fig = plt.figure()
         ax = fig.add_subplot(111, projection='3d')
         
         ax.scatter(self.X.T[0], self.X.T[1], self.Y*max(z), zdir='z', s=20, c=None, depthshade=True)
         ax.plot_surface(x, y, z.reshape(self.n_points_per_axes, self.n_points_per_axes), cmap='inferno', alpha = 0.4)
-#         scores = np.array(scores).reshape(-1, 1)
-        
-#         fig = plt.figure()
-#         ax = fig.add_subplot(111, projection='3d')
-        
-#         print(U.shape)
-#         print(U)
-#         ind_1 = U.argsort(axis = 0).T[0]
-#         print(U[ind_1].shape)
-#         print(U[ind_1])
-#         ind_2 = U[ind_1].argsort(axis = 0).T[1]
-#         print(U[ind_1][ind_2].shape)
-#         print(U[ind_1][ind_2])
-        
-#         U = U.T[ind_1][ind_2]
-#         ax.scatter(U.T[0], U.T[1], scores)
 
+        plt.savefig(score_name + str(iteration) + 'score' + '.png')
+        
+        # 2-d plot of recently chosen points
 #         plt.clf()
 #         plt.plot(U.T[0], U.T[1], 'bo')
-        
-# #         ind = scores.argsort(axis = 0)[-self.n_points_to_show:]
-# #         scores_to_show = scores[ind]
-# #         U_to_show = (U[ind]).reshape(-1, 2)
+
 #         X_init = X_train[:self.n_points_to_show]
 #         X_recent = X_train[-self.n_points_to_show:]
         
 #         plt.plot(X_init.T[0], X_init.T[1], 'g+')
-#         plt.plot(X_recent.T[0], X_recent.T[1], 'ro')
-        
-        plt.savefig(score_name + str(iteration) + 'score' + '.png')
+#         plt.plot(X_recent.T[0], X_recent.T[1], 'ro')     
 
+        # probability plot
+        ax.scatter(X_train.T[0], X_train.T[1], y_train*max(probability))
+        ax.plot_surface(x, y, probability.reshape(self.n_points_per_axes, self.n_points_per_axes), cmap='inferno', alpha = 0.4)
+
+        plt.savefig(score_name + str(iteration) + 'prob' + '.png')
+
+        # countour plot of score-function
+        plt.clf()
         z = z.reshape(points.shape[1], -1)
 
-        plt.clf()
-        plt.plot(self.X[0:self.total_n//2].T[0], self.X[0:self.total_n//2].T[1], 'bo', alpha = 0.1)
-        plt.plot(self.X[self.total_n//2:-1].T[0], self.X[self.total_n//2:-1].T[1], 'ro', alpha = 0.1)
-        plt.contour(np.linspace(-20, 20, self.n_points_per_axes), np.linspace(-20, 20, self.n_points_per_axes), z)
+        plt.plot(X_train[np.nonzero(y_train)[0]].T[1], X_train[np.nonzero(y_train)[0]].T[0], 'bo', alpha = 0.1)
+        plt.plot(X_train[np.where(y_train == 0)[0]].T[1], X_train[np.where(y_train == 0)[0]].T[0], 'ro', alpha = 0.1)
+        plt.plot(X_train[-1].T[1], X_train[-1].T[0], 'k*')
+        
+        cmap = plt.cm.get_cmap("winter", 15)
+        
+        cs = plt.contour(np.linspace(-20, 20, self.n_points_per_axes), np.linspace(-20, 20, self.n_points_per_axes), z)
+#         fig.colorbar(cs)
         plt.savefig(score_name + str(iteration) + 'contour' + '.png')
+        
+        plt.close("all")
         
 class HTRU_2(Data):
 

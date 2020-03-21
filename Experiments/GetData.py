@@ -175,8 +175,33 @@ class HTRU_2(Data):
         dataset = pd.read_csv("HTRU_2.csv", header = None, 
                               names = ["0", "1", "2", "3", "4", "5", "6", "7", "class"])
         
-        self.Y = dataset["class"][0:1000].values
-        self.X = dataset[["0", "1", "2", "3", "4", "5", "6", "7"]][0:1000].values
+        self.Y = dataset["class"].values
+        self.X = dataset[["0", "1", "2", "3", "4", "5", "6", "7"]].values
+
+        self.U, self.X_train, self.y_U, self.y_train = train_test_split(
+                                                        self.X, 
+                                                        self.Y, 
+                                                        test_size = self.start_n,
+                                                        train_size = self.end_n * 2)
+        
+        self.U, self.X_test, self.y_U, self.y_test = train_test_split(
+                                                        self.U, 
+                                                        self.y_U, 
+                                                        test_size = self.test_size)
+
+        return self.U, self.X_train, self.y_U, self.y_train, self.X_test, self.y_test
+    
+class Haberman(Data):
+
+    def __init__(self, start_n, end_n, test_size):
+        super(Haberman, self).__init__(0, 0, start_n, end_n, test_size)
+    
+    def generate_data(self):
+        dataset = pd.read_csv("haberman.data", header = None, delimiter = ",",
+                              names = ["0", "1", "2", "class"])
+        
+        self.Y = dataset["class"].values
+        self.X = dataset[["0", "1", "2"]].values
 
         self.U, self.X_train, self.y_U, self.y_train = train_test_split(
                                                         self.X, 
@@ -188,4 +213,29 @@ class HTRU_2(Data):
                                                         self.y_U, 
                                                         test_size = self.test_size)
 
-        return self.U, self.X_train, self.y_U, self.y_train, self.X_test, self.y_test
+        return self.U, self.X_train, self.y_U - 1, self.y_train - 1, self.X_test, self.y_test - 1    
+    
+class Skin(Data):
+
+    def __init__(self, start_n, end_n, test_size):
+        super(Skin, self).__init__(0, 0, start_n, end_n, test_size)
+    
+    def generate_data(self):
+        dataset = pd.read_csv("Skin_NonSkin.txt", header = None, delimiter = "\t",
+                              names = ["0", "1", "2", "class"])
+        
+        self.Y = dataset["class"].values
+        self.X = dataset[["0", "1", "2"]].values
+
+        self.U, self.X_train, self.y_U, self.y_train = train_test_split(
+                                                        self.X, 
+                                                        self.Y, 
+                                                        test_size = self.start_n,
+                                                        train_size = self.end_n * 2)
+        
+        self.U, self.X_test, self.y_U, self.y_test = train_test_split(
+                                                        self.U, 
+                                                        self.y_U, 
+                                                        test_size = self.test_size)
+
+        return self.U, self.X_train, self.y_U - 1, self.y_train - 1, self.X_test, self.y_test - 1    

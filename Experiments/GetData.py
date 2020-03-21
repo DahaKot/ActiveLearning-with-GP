@@ -92,11 +92,11 @@ class Generated2dimData(Data):
         super(Generated2dimData, self).__init__(2, total_n, start_n, end_n, test_size)
         
         self.n_points_to_show = 20
-        self.n_points_per_axes = 100
+        self.n_points_per_axes = 10
     
     def generate_data(self):
         self.X, self.Y = make_blobs(np.array([self.total_n//2, self.total_n//2]), self.ndim, 
-                                        cluster_std = 3, center_box = (-10, 10), shuffle = False, random_state = 2)
+                                        cluster_std = 4, center_box = (-10, 10), shuffle = False, random_state = 2)
             
         fig = plt.figure()
         ax = fig.add_subplot(111, projection='3d')
@@ -140,10 +140,15 @@ class Generated2dimData(Data):
 #         plt.plot(X_recent.T[0], X_recent.T[1], 'ro')     
 
         # probability plot
-        ax.scatter(X_train.T[0], X_train.T[1], y_train*max(probability))
-        ax.plot_surface(x, y, probability.reshape(self.n_points_per_axes, self.n_points_per_axes), cmap='inferno', alpha = 0.4)
+#         plt.clf()
+        
+#         fig = plt.figure()
+#         ax = fig.add_subplot(111, projection='3d')
+        
+#         ax.scatter(X_train.T[0], X_train.T[1], y_train*max(probability))
+#         ax.plot_surface(x, y, probability.reshape(self.n_points_per_axes, self.n_points_per_axes), cmap='inferno', alpha = 0.4)
 
-        plt.savefig(score_name + str(iteration) + 'prob' + '.png')
+#         plt.savefig(score_name + str(iteration) + 'prob' + '.png')
 
         # countour plot of score-function
         plt.clf()

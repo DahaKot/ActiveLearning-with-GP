@@ -40,15 +40,19 @@ def calculate_scores_sqsm(U, m, X_train, y_train, inv_K):
     scores = []
     
     for i in range(U.shape[0]):
-        t = 1 if m.predict(U[i].reshape(-1, ndim))[0] >= 0.5 else -1
+#         a = np.rint(a) * 2 - 1
+#         t = 1 if m.predict(U[i].reshape(-1, ndim))[0] >= 0.5 else -1
+        t = np.rint(m.predict(U[i].reshape(-1, ndim))[0]) * 2 - 1
         
         kernel = GPy.kern.RBF(ndim, variance=m.kern.variance[0], lengthscale=m.kern.lengthscale[0])
 
         m_v = GPy.core.GP(X = np.concatenate((X_train, U[i].reshape(-1, ndim)), axis = 0),
                 Y = np.append(y_train, t).reshape(-1, 1), 
                 kernel = kernel, 
-                inference_method = GPy.inference.latent_function_inference.Laplace(),
+                inference_method = GPy.inference.latent_function_inference.EP(),
                 likelihood = lik)
+        
+        m.optimize(messages = False)
         
         prediction_v = m_v.predict(U.reshape(-1, ndim))[0]
         prediction = m.predict(U.reshape(-1, ndim))[0]

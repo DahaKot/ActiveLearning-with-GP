@@ -1,0 +1,5 @@
+total_n = 1000
+start_n = 20
+end_n   = 500
+test_n  = 500
+ndim    = 1

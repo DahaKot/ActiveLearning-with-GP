@@ -22,7 +22,7 @@
 
 \maketitle
 
-\setlength{\marginparwidth}{2cm}
+\setlength{\marginparwidth}{1.5 cm}
 \selectlanguage{english}
 
 \begin{abstract}
@@ -177,92 +177,180 @@ g(u) & = & \|f^u_t(v)-f(v)\|_{\mathcal{U}} = \sqrt{\sum\limits_{v \in \mathcal{U
 
 \section{Experiments}
 
-We took 2 blobs of 2-dimensional points that consist 1000 points total. 400 of them went to the test set and training size was changing from 25 to 300 points. Figures below shows what points different score-functions tend to choose for cases when in the training set are 50, 75 and 100 points.
+\subsection{2 blobs}
+
+We took 2 blobs of 2-dimensional points that consist of 1000 points total. 500 of them went to the test set and training size was changing from 20 to 500 points. Figures \ref{recent1}, \ref{recent2}, \ref{recent3} show what points different score-functions tend to choose for cases when in the training set are 50, 100 and 150 points.
 
 \begin{figure}[h]
 \begin{minipage}[h]{0.49\linewidth}
-\center{\includegraphics[scale = 0.3]{50scorerand.png}} Rand
+\center{\includegraphics[scale = 0.5]{50recent_points_rand.png}} Random
 \end{minipage}
 \hfill
 \begin{minipage}[h]{0.49\linewidth}
-\center{\includegraphics[scale = 0.3]{50scorevari.png}} Vari
+\center{\includegraphics[scale = 0.5]{50recent_points_mvar.png}} Max-variance
 \end{minipage}
 \vfill
 \begin{minipage}[h]{0.49\linewidth}
-\center{\includegraphics[scale = 0.3]{50scoresqsm.png}} Sqsm
+\center{\includegraphics[scale = 0.5]{50recent_points_l2fm.png}} 2-norm in formula
 \end{minipage}
 \hfill
 \begin{minipage}[h]{0.49\linewidth}
-\center{\includegraphics[scale = 0.3]{50scoreRKHS.png}} RKHS
+\center{\includegraphics[scale = 0.5]{50recent_points_RKHS.png}} RKHS
 \end{minipage}
 \vfill
 \begin{minipage}[h]{0.49\linewidth}
-\center{\includegraphics[scale = 0.3]{50scoreHvar.png}} Hvar
+\center{\includegraphics[scale = 0.5]{50recent_points_Hvar.png}} RKHS $\cdot$ variance
 \end{minipage}
-\hfill
-\begin{minipage}[h]{0.49\linewidth}
-\center{\includegraphics[scale = 0.3]{50scorel2fm.png}} L2fm
-\end{minipage}
-\caption{Blue points - original data given to the model to choose next point from. Red points - 25 points that were chosen. Training set contains 50 points.}
-\label{scoreplots}
+\caption{Blue points - unlabeled data given to the model to choose next point from. Red points - 10 points that were chosen. Training set contains 50 points.}
+\label{recent1}
 \end{figure}
 
 \begin{figure}[h]
 \begin{minipage}[h]{0.49\linewidth}
-\center{\includegraphics[scale = 0.3]{75scorerand.png}} Rand
+\center{\includegraphics[scale = 0.5]{100recent_points_rand.png}} Random
 \end{minipage}
 \hfill
 \begin{minipage}[h]{0.49\linewidth}
-\center{\includegraphics[scale = 0.3]{75scorevari.png}} Vari
+\center{\includegraphics[scale = 0.5]{100recent_points_mvar.png}} Max-variance
 \end{minipage}
 \vfill
 \begin{minipage}[h]{0.49\linewidth}
-\center{\includegraphics[scale = 0.3]{75scoresqsm.png}} Sqsm
+\center{\includegraphics[scale = 0.5]{100recent_points_l2fm.png}} 2-norm in formula
 \end{minipage}
 \hfill
 \begin{minipage}[h]{0.49\linewidth}
-\center{\includegraphics[scale = 0.3]{75scoreRKHS.png}} RKHS
+\center{\includegraphics[scale = 0.5]{100recent_points_RKHS.png}} RKHS
 \end{minipage}
 \vfill
 \begin{minipage}[h]{0.49\linewidth}
-\center{\includegraphics[scale = 0.3]{75scoreHvar.png}} Hvar
+\center{\includegraphics[scale = 0.5]{100recent_points_Hvar.png}} RKHS $\cdot$ variance
 \end{minipage}
-\hfill
-\begin{minipage}[h]{0.49\linewidth}
-\center{\includegraphics[scale = 0.3]{75scorel2fm.png}} L2fm
-\end{minipage}
-\caption{Blue points - original data given to the model to choose next point from. Red points - 25 points that were chosen. Training set contains 75 points.}
-\label{scoreplots}
+\caption{Blue points - unlabeled data given to the model to choose next point from. Red points - 10 points that were chosen. Training set contains 100 points.}
+\label{recent2}
 \end{figure}
 
 \begin{figure}[h]
 \begin{minipage}[h]{0.49\linewidth}
-\center{\includegraphics[scale = 0.3]{100scorerand.png}} Rand
+\center{\includegraphics[scale = 0.5]{150recent_points_rand.png}} Random
 \end{minipage}
 \hfill
 \begin{minipage}[h]{0.49\linewidth}
-\center{\includegraphics[scale = 0.3]{100scorevari.png}} Vari
+\center{\includegraphics[scale = 0.5]{150recent_points_mvar.png}} Max-variance
 \end{minipage}
 \vfill
 \begin{minipage}[h]{0.49\linewidth}
-\center{\includegraphics[scale = 0.3]{100scoresqsm.png}} Sqsm
+\center{\includegraphics[scale = 0.5]{150recent_points_l2fm.png}} 2-norm in formula
 \end{minipage}
 \hfill
 \begin{minipage}[h]{0.49\linewidth}
-\center{\includegraphics[scale = 0.3]{100scoreRKHS.png}} RKHS
+\center{\includegraphics[scale = 0.5]{150recent_points_RKHS.png}} RKHS
 \end{minipage}
 \vfill
 \begin{minipage}[h]{0.49\linewidth}
-\center{\includegraphics[scale = 0.3]{100scoreHvar.png}} Hvar
+\center{\includegraphics[scale = 0.5]{150recent_points_Hvar.png}} RKHS $\cdot$ variance
 \end{minipage}
-\hfill
-\begin{minipage}[h]{0.49\linewidth}
-\center{\includegraphics[scale = 0.3]{100scorel2fm.png}} L2fm
-\end{minipage}
-\caption{Blue points - original data given to the model to choose next point from. Red points - 25 points that were chosen. Training set contains 100 points.}
-\label{scoreplots}
+\caption{Blue points - unlabeled data given to the model to choose next point from. Red points - 10 points that were chosen. Training set contains 150 points.}
+\label{recent3}
 \end{figure}
 
+\clearpage
+Next we took the same dataset and plot 3-d surfaces of score-functions and also tried to project them onto a plane using contour plots. The results are presented on figures \ref{surface_plots} and \ref{contour_plots}. Training dataset is containing 100 points.
+
+\begin{figure}[h]
+\begin{minipage}[h]{0.49\linewidth}
+\center{\includegraphics[scale = 0.5]{100surface_mvar.png}} Max-variance
+\end{minipage}
+\hfill
+\begin{minipage}[h]{0.49\linewidth}
+\center{\includegraphics[scale = 0.5]{100surface_l2fm.png}} 2-norm in formula
+\end{minipage}
+\vfill
+\begin{minipage}[h]{0.49\linewidth}
+\center{\includegraphics[scale = 0.5]{100surface_RKHS.png}} RKHS
+\end{minipage}
+\hfill
+\begin{minipage}[h]{0.49\linewidth}
+\center{\includegraphics[scale = 0.5]{100surface_Hvar.png}} RKHS $\cdot$ variance
+\end{minipage}
+
+\caption{Blue points - training dataset. Surface is drawn on the grid 100x100 points in total. The logarithmic scale is selected along the third axis.}
+\label{surface_plots}
+\end{figure}
+
+\begin{figure}[h]
+\begin{minipage}[h]{0.49\linewidth}
+\center{\includegraphics[scale = 0.5]{100contour_mvar.png}} Max-variance
+\end{minipage}
+\hfill
+\begin{minipage}[h]{0.49\linewidth}
+\center{\includegraphics[scale = 0.5]{100contour_l2fm.png}} 2-norm in formula
+\end{minipage}
+\vfill
+\begin{minipage}[h]{0.49\linewidth}
+\center{\includegraphics[scale = 0.5]{100contour_RKHS.png}} RKHS
+\end{minipage}
+\hfill
+\begin{minipage}[h]{0.49\linewidth}
+\center{\includegraphics[scale = 0.5]{100contour_Hvar.png}} RKHS $\cdot$ variance
+\end{minipage}
+
+\caption{Blue points - training examples from the first class. Red points - from the second class. Black stars - recently chosen points. Contour is drawn on the grid 100x100 points in total.}
+\label{contour_plots}
+\end{figure}
+
+\clearpage
+On the figure \ref{accBlobs} accuracies depending on the size of training dataset and method are shown.
+
+\begin{figure}[h]
+\center{\includegraphics[scale = 0.4]{Betteraccuracy3.png}}
+\caption{Accuracy depending on th size of training dataset. In addition to active learning criteria logistic regression and kNN-classifier were compared.}
+\label{accBlobs}
+\end{figure}
+
+\clearpage
+\subsection{Skin}
+
+Skin dataset  is collected by randomly sampling B,G,R values from face images of various age groups (young, middle, and old), race groups (white, black, and asian), and genders obtained from FERET database and PAL database. Total learning sample size is 245057; out of which 50859 is the skin samples and 194198 is non-skin samples. 
+\\
+We used 2000 random samples from the dataset. 1000 went to the test dataset and training dataset changed from 10 to 1000 points. We used it to compare not only different score-functions, but also compare active-learning approach with some traditional methods: logistic regression, k nearest neighbours, decision tree and random forest.
+\\
+On the figure \ref{Skinacc} you can see how accuracy of the certain method depends on the size of training dataset. Traditional methods shared train dataset with random score.
+
+\begin{figure}[h]
+\begin{minipage}[c]{0.49\linewidth}
+\center{\includegraphics[scale = 0.4]{accuracyMethodsSkin1.png}} Size of train datset changes from 20 to 500 points.
+\end{minipage}
+\vfill
+\begin{minipage}[c]{0.49\linewidth}
+\center{\includegraphics[scale = 0.4]{accuracyMethodsSkin3.png}} Size of train datset changes from 20 to 166 (500 / 3) points.
+\end{minipage}
+\caption{Compartion of different approaches to classification task on skin dataset.}
+\label{Skinacc}
+\end{figure}
+
+\clearpage
+\subsection{Haberman}
+
+The Haberman dataset contains cases from a study that was conducted between 1958 and 1970 at the University of Chicago's Billings Hospital on the survival of patients who had undergone surgery for breast cancer.
+\\
+On the plots you can see how accuracy of the certain method depends on the size of training dataset.
+
+\begin{figure}[h]
+\begin{minipage}[c]{0.49\linewidth}
+\center{\includegraphics[scale = 0.4]{accuracy2dim.png}} Size of train datset changes from 10 to 600 points.
+\end{minipage}
+\vfill
+\begin{minipage}[c]{0.49\linewidth}
+\center{\includegraphics[scale = 0.4]{accuracy2dim5.png}} Size of train datset changes from 10 to 300 (600 / 2) points.
+\end{minipage}
+\caption{Compartion of different approaches to classification task.}
+\label{Skin}
+\end{figure}
+
+\subsection{Conclusions}
+From the experiments we certainly can say that choosing new point in active learning process by the maximum of variance leads to worse quality. Other methods perfom better or at least as well as random sampling.
+
+\clearpage
 \begin{thebibliography}{}
 
 \bibitem[1]{Hvar}

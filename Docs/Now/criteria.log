@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2019.7.18)  7 JAN 2020 19:32
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2019.7.18)  4 APR 2020 12:41
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -343,14 +343,7 @@ LaTeX Font Info:    Overwriting math alphabet `\mathbbm' in version `bold'
 (Font)                  U/bbm/m/n --> U/bbm/bx/n on input line 33.
 LaTeX Font Info:    Overwriting math alphabet `\mathbbmss' in version `bold'
 (Font)                  U/bbmss/m/n --> U/bbmss/bx/n on input line 35.
-) (./criteria.aux
-
-LaTeX Warning: Label `scoreplots' multiply defined.
-
-
-LaTeX Warning: Label `scoreplots' multiply defined.
-
-)
+) (./criteria.aux)
 \openout1 = `criteria.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 21.
@@ -522,235 +515,362 @@ Underfull \hbox (badness 10000) in paragraph at lines 145--151
  []
 
 [3]
-<50scorerand.png, id=36, 722.7pt x 451.6875pt>
-File: 50scorerand.png Graphic file (type png)
-<use 50scorerand.png>
-Package pdftex.def Info: 50scorerand.png  used on input line 184.
-(pdftex.def)             Requested size: 216.81166pt x 135.5073pt.
+<50recent_points_rand.png, id=36, 433.62pt x 289.08pt>
+File: 50recent_points_rand.png Graphic file (type png)
+<use 50recent_points_rand.png>
+Package pdftex.def Info: 50recent_points_rand.png  used on input line 186.
+(pdftex.def)             Requested size: 216.80946pt x 144.53964pt.
 
-Overfull \hbox (11.86507pt too wide) in paragraph at lines 184--185
+Overfull \hbox (11.86287pt too wide) in paragraph at lines 186--187
  [] 
  []
 
-<50scorevari.png, id=38, 722.7pt x 451.6875pt>
-File: 50scorevari.png Graphic file (type png)
-<use 50scorevari.png>
-Package pdftex.def Info: 50scorevari.png  used on input line 188.
-(pdftex.def)             Requested size: 216.81166pt x 135.5073pt.
+<50recent_points_mvar.png, id=38, 433.62pt x 289.08pt>
+File: 50recent_points_mvar.png Graphic file (type png)
+<use 50recent_points_mvar.png>
+Package pdftex.def Info: 50recent_points_mvar.png  used on input line 190.
+(pdftex.def)             Requested size: 216.80946pt x 144.53964pt.
 
-Overfull \hbox (11.86507pt too wide) in paragraph at lines 188--189
+Overfull \hbox (11.86287pt too wide) in paragraph at lines 190--191
  [] 
  []
 
-<50scoresqsm.png, id=39, 722.7pt x 451.6875pt>
-File: 50scoresqsm.png Graphic file (type png)
-<use 50scoresqsm.png>
-Package pdftex.def Info: 50scoresqsm.png  used on input line 192.
-(pdftex.def)             Requested size: 216.81166pt x 135.5073pt.
+<50recent_points_l2fm.png, id=39, 433.62pt x 289.08pt>
+File: 50recent_points_l2fm.png Graphic file (type png)
+<use 50recent_points_l2fm.png>
+Package pdftex.def Info: 50recent_points_l2fm.png  used on input line 194.
+(pdftex.def)             Requested size: 216.80946pt x 144.53964pt.
 
-Overfull \hbox (11.86507pt too wide) in paragraph at lines 192--193
+Overfull \hbox (11.86287pt too wide) in paragraph at lines 194--195
  [] 
  []
 
-<50scoreRKHS.png, id=40, 722.7pt x 451.6875pt>
-File: 50scoreRKHS.png Graphic file (type png)
-<use 50scoreRKHS.png>
-Package pdftex.def Info: 50scoreRKHS.png  used on input line 196.
-(pdftex.def)             Requested size: 216.81166pt x 135.5073pt.
+<50recent_points_RKHS.png, id=40, 433.62pt x 289.08pt>
+File: 50recent_points_RKHS.png Graphic file (type png)
+<use 50recent_points_RKHS.png>
+Package pdftex.def Info: 50recent_points_RKHS.png  used on input line 198.
+(pdftex.def)             Requested size: 216.80946pt x 144.53964pt.
 
-Overfull \hbox (11.86507pt too wide) in paragraph at lines 196--197
+Overfull \hbox (11.86287pt too wide) in paragraph at lines 198--199
  [] 
  []
 
-<50scoreHvar.png, id=41, 722.7pt x 451.6875pt>
-File: 50scoreHvar.png Graphic file (type png)
-<use 50scoreHvar.png>
-Package pdftex.def Info: 50scoreHvar.png  used on input line 200.
-(pdftex.def)             Requested size: 216.81166pt x 135.5073pt.
+<50recent_points_Hvar.png, id=41, 433.62pt x 289.08pt>
+File: 50recent_points_Hvar.png Graphic file (type png)
+<use 50recent_points_Hvar.png>
+Package pdftex.def Info: 50recent_points_Hvar.png  used on input line 202.
+(pdftex.def)             Requested size: 216.80946pt x 144.53964pt.
 
-Overfull \hbox (11.86507pt too wide) in paragraph at lines 200--201
- [] 
- []
-
-<50scorel2fm.png, id=42, 722.7pt x 451.6875pt>
-File: 50scorel2fm.png Graphic file (type png)
-<use 50scorel2fm.png>
-Package pdftex.def Info: 50scorel2fm.png  used on input line 204.
-(pdftex.def)             Requested size: 216.81166pt x 135.5073pt.
-
-Overfull \hbox (11.86507pt too wide) in paragraph at lines 204--205
+Overfull \hbox (11.86287pt too wide) in paragraph at lines 202--203
  [] 
  []
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<75scorerand.png, id=43, 722.7pt x 451.6875pt>
-File: 75scorerand.png Graphic file (type png)
-<use 75scorerand.png>
-Package pdftex.def Info: 75scorerand.png  used on input line 212.
-(pdftex.def)             Requested size: 216.81166pt x 135.5073pt.
+<100recent_points_rand.png, id=42, 433.62pt x 289.08pt>
+File: 100recent_points_rand.png Graphic file (type png)
+<use 100recent_points_rand.png>
+Package pdftex.def Info: 100recent_points_rand.png  used on input line 210.
+(pdftex.def)             Requested size: 216.80946pt x 144.53964pt.
 
-Overfull \hbox (11.86507pt too wide) in paragraph at lines 212--213
+Overfull \hbox (11.86287pt too wide) in paragraph at lines 210--211
  [] 
  []
 
-<75scorevari.png, id=44, 722.7pt x 451.6875pt>
-File: 75scorevari.png Graphic file (type png)
-<use 75scorevari.png>
-Package pdftex.def Info: 75scorevari.png  used on input line 216.
-(pdftex.def)             Requested size: 216.81166pt x 135.5073pt.
+<100recent_points_mvar.png, id=43, 433.62pt x 289.08pt>
+File: 100recent_points_mvar.png Graphic file (type png)
+<use 100recent_points_mvar.png>
+Package pdftex.def Info: 100recent_points_mvar.png  used on input line 214.
+(pdftex.def)             Requested size: 216.80946pt x 144.53964pt.
 
-Overfull \hbox (11.86507pt too wide) in paragraph at lines 216--217
+Overfull \hbox (11.86287pt too wide) in paragraph at lines 214--215
  [] 
  []
 
-<75scoresqsm.png, id=45, 722.7pt x 451.6875pt>
-File: 75scoresqsm.png Graphic file (type png)
-<use 75scoresqsm.png>
-Package pdftex.def Info: 75scoresqsm.png  used on input line 220.
-(pdftex.def)             Requested size: 216.81166pt x 135.5073pt.
+<100recent_points_l2fm.png, id=44, 433.62pt x 289.08pt>
+File: 100recent_points_l2fm.png Graphic file (type png)
+<use 100recent_points_l2fm.png>
+Package pdftex.def Info: 100recent_points_l2fm.png  used on input line 218.
+(pdftex.def)             Requested size: 216.80946pt x 144.53964pt.
 
-Overfull \hbox (11.86507pt too wide) in paragraph at lines 220--221
+Overfull \hbox (11.86287pt too wide) in paragraph at lines 218--219
  [] 
  []
 
-<75scoreRKHS.png, id=46, 722.7pt x 451.6875pt>
-File: 75scoreRKHS.png Graphic file (type png)
-<use 75scoreRKHS.png>
-Package pdftex.def Info: 75scoreRKHS.png  used on input line 224.
-(pdftex.def)             Requested size: 216.81166pt x 135.5073pt.
+<100recent_points_RKHS.png, id=45, 433.62pt x 289.08pt>
+File: 100recent_points_RKHS.png Graphic file (type png)
+<use 100recent_points_RKHS.png>
+Package pdftex.def Info: 100recent_points_RKHS.png  used on input line 222.
+(pdftex.def)             Requested size: 216.80946pt x 144.53964pt.
 
-Overfull \hbox (11.86507pt too wide) in paragraph at lines 224--225
+Overfull \hbox (11.86287pt too wide) in paragraph at lines 222--223
  [] 
  []
 
-<75scoreHvar.png, id=47, 722.7pt x 451.6875pt>
-File: 75scoreHvar.png Graphic file (type png)
-<use 75scoreHvar.png>
-Package pdftex.def Info: 75scoreHvar.png  used on input line 228.
-(pdftex.def)             Requested size: 216.81166pt x 135.5073pt.
+<100recent_points_Hvar.png, id=46, 433.62pt x 289.08pt>
+File: 100recent_points_Hvar.png Graphic file (type png)
+<use 100recent_points_Hvar.png>
+Package pdftex.def Info: 100recent_points_Hvar.png  used on input line 226.
+(pdftex.def)             Requested size: 216.80946pt x 144.53964pt.
 
-Overfull \hbox (11.86507pt too wide) in paragraph at lines 228--229
- [] 
- []
-
-<75scorel2fm.png, id=48, 722.7pt x 451.6875pt>
-File: 75scorel2fm.png Graphic file (type png)
-<use 75scorel2fm.png>
-Package pdftex.def Info: 75scorel2fm.png  used on input line 232.
-(pdftex.def)             Requested size: 216.81166pt x 135.5073pt.
-
-Overfull \hbox (11.86507pt too wide) in paragraph at lines 232--233
+Overfull \hbox (11.86287pt too wide) in paragraph at lines 226--227
  [] 
  []
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<100scorerand.png, id=49, 722.7pt x 451.6875pt>
-File: 100scorerand.png Graphic file (type png)
-<use 100scorerand.png>
-Package pdftex.def Info: 100scorerand.png  used on input line 240.
-(pdftex.def)             Requested size: 216.81166pt x 135.5073pt.
+<150recent_points_rand.png, id=47, 433.62pt x 289.08pt>
+File: 150recent_points_rand.png Graphic file (type png)
+<use 150recent_points_rand.png>
+Package pdftex.def Info: 150recent_points_rand.png  used on input line 234.
+(pdftex.def)             Requested size: 216.80946pt x 144.53964pt.
 
-Overfull \hbox (11.86507pt too wide) in paragraph at lines 240--241
+Overfull \hbox (11.86287pt too wide) in paragraph at lines 234--235
  [] 
  []
 
-<100scorevari.png, id=50, 722.7pt x 451.6875pt>
-File: 100scorevari.png Graphic file (type png)
-<use 100scorevari.png>
-Package pdftex.def Info: 100scorevari.png  used on input line 244.
-(pdftex.def)             Requested size: 216.81166pt x 135.5073pt.
+<150recent_points_mvar.png, id=48, 433.62pt x 289.08pt>
+File: 150recent_points_mvar.png Graphic file (type png)
+<use 150recent_points_mvar.png>
+Package pdftex.def Info: 150recent_points_mvar.png  used on input line 238.
+(pdftex.def)             Requested size: 216.80946pt x 144.53964pt.
 
-Overfull \hbox (11.86507pt too wide) in paragraph at lines 244--245
+Overfull \hbox (11.86287pt too wide) in paragraph at lines 238--239
  [] 
  []
 
-<100scoresqsm.png, id=51, 722.7pt x 451.6875pt>
-File: 100scoresqsm.png Graphic file (type png)
-<use 100scoresqsm.png>
-Package pdftex.def Info: 100scoresqsm.png  used on input line 248.
-(pdftex.def)             Requested size: 216.81166pt x 135.5073pt.
+<150recent_points_l2fm.png, id=49, 433.62pt x 289.08pt>
+File: 150recent_points_l2fm.png Graphic file (type png)
+<use 150recent_points_l2fm.png>
+Package pdftex.def Info: 150recent_points_l2fm.png  used on input line 242.
+(pdftex.def)             Requested size: 216.80946pt x 144.53964pt.
 
-Overfull \hbox (11.86507pt too wide) in paragraph at lines 248--249
+Overfull \hbox (11.86287pt too wide) in paragraph at lines 242--243
  [] 
  []
 
-<100scoreRKHS.png, id=52, 722.7pt x 451.6875pt>
-File: 100scoreRKHS.png Graphic file (type png)
-<use 100scoreRKHS.png>
-Package pdftex.def Info: 100scoreRKHS.png  used on input line 252.
-(pdftex.def)             Requested size: 216.81166pt x 135.5073pt.
+<150recent_points_RKHS.png, id=50, 433.62pt x 289.08pt>
+File: 150recent_points_RKHS.png Graphic file (type png)
+<use 150recent_points_RKHS.png>
+Package pdftex.def Info: 150recent_points_RKHS.png  used on input line 246.
+(pdftex.def)             Requested size: 216.80946pt x 144.53964pt.
 
-Overfull \hbox (11.86507pt too wide) in paragraph at lines 252--253
+Overfull \hbox (11.86287pt too wide) in paragraph at lines 246--247
  [] 
  []
 
-<100scoreHvar.png, id=53, 722.7pt x 451.6875pt>
-File: 100scoreHvar.png Graphic file (type png)
-<use 100scoreHvar.png>
-Package pdftex.def Info: 100scoreHvar.png  used on input line 256.
-(pdftex.def)             Requested size: 216.81166pt x 135.5073pt.
+<150recent_points_Hvar.png, id=51, 433.62pt x 289.08pt>
+File: 150recent_points_Hvar.png Graphic file (type png)
+<use 150recent_points_Hvar.png>
+Package pdftex.def Info: 150recent_points_Hvar.png  used on input line 250.
+(pdftex.def)             Requested size: 216.80946pt x 144.53964pt.
 
-Overfull \hbox (11.86507pt too wide) in paragraph at lines 256--257
- [] 
- []
-
-<100scorel2fm.png, id=54, 722.7pt x 451.6875pt>
-File: 100scorel2fm.png Graphic file (type png)
-<use 100scorel2fm.png>
-Package pdftex.def Info: 100scorel2fm.png  used on input line 260.
-(pdftex.def)             Requested size: 216.81166pt x 135.5073pt.
-
-Overfull \hbox (11.86507pt too wide) in paragraph at lines 260--261
+Overfull \hbox (11.86287pt too wide) in paragraph at lines 250--251
  [] 
  []
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[4] [5 <./50scorerand.png> <./50scorevari.png> <./50scoresqsm.png> <./50scoreRK
-HS.png> <./50scoreHvar.png> <./50scorel2fm.png>] [6 <./75scorerand.png> <./75sc
-orevari.png> <./75scoresqsm.png> <./75scoreRKHS.png> <./75scoreHvar.png> <./75s
-corel2fm.png>] [7 <./100scorerand.png> <./100scorevari.png> <./100scoresqsm.png
-> <./100scoreRKHS.png> <./100scoreHvar.png> <./100scorel2fm.png>]
-(./criteria.aux)
+[4] [5 <./50recent_points_rand.png> <./50recent_points_mvar.png> <./50recent_po
+ints_l2fm.png> <./50recent_points_RKHS.png> <./50recent_points_Hvar.png>]
+[6 <./100recent_points_rand.png> <./100recent_points_mvar.png> <./100recent_poi
+nts_l2fm.png> <./100recent_points_RKHS.png> <./100recent_points_Hvar.png>]
+[7 <./150recent_points_rand.png> <./150recent_points_mvar.png> <./150recent_poi
+nts_l2fm.png> <./150recent_points_RKHS.png> <./150recent_points_Hvar.png>]
+<100surface_mvar.png, id=80, 433.62pt x 289.08pt>
+File: 100surface_mvar.png Graphic file (type png)
+<use 100surface_mvar.png>
+Package pdftex.def Info: 100surface_mvar.png  used on input line 261.
+(pdftex.def)             Requested size: 216.80946pt x 144.53964pt.
 
-LaTeX Warning: There were multiply-defined labels.
+Overfull \hbox (11.86287pt too wide) in paragraph at lines 261--262
+ [] 
+ []
 
- ) 
+<100surface_l2fm.png, id=81, 433.62pt x 289.08pt>
+File: 100surface_l2fm.png Graphic file (type png)
+<use 100surface_l2fm.png>
+Package pdftex.def Info: 100surface_l2fm.png  used on input line 265.
+(pdftex.def)             Requested size: 216.80946pt x 144.53964pt.
+
+Overfull \hbox (11.86287pt too wide) in paragraph at lines 265--266
+ [] 
+ []
+
+<100surface_RKHS.png, id=82, 433.62pt x 289.08pt>
+File: 100surface_RKHS.png Graphic file (type png)
+<use 100surface_RKHS.png>
+Package pdftex.def Info: 100surface_RKHS.png  used on input line 269.
+(pdftex.def)             Requested size: 216.80946pt x 144.53964pt.
+
+Overfull \hbox (11.86287pt too wide) in paragraph at lines 269--270
+ [] 
+ []
+
+<100surface_Hvar.png, id=83, 433.62pt x 289.08pt>
+File: 100surface_Hvar.png Graphic file (type png)
+<use 100surface_Hvar.png>
+Package pdftex.def Info: 100surface_Hvar.png  used on input line 273.
+(pdftex.def)             Requested size: 216.80946pt x 144.53964pt.
+
+Overfull \hbox (11.86287pt too wide) in paragraph at lines 273--274
+ [] 
+ []
+
+<100contour_mvar.png, id=84, 433.62pt x 289.08pt>
+File: 100contour_mvar.png Graphic file (type png)
+<use 100contour_mvar.png>
+Package pdftex.def Info: 100contour_mvar.png  used on input line 282.
+(pdftex.def)             Requested size: 216.80946pt x 144.53964pt.
+
+Overfull \hbox (11.86287pt too wide) in paragraph at lines 282--283
+ [] 
+ []
+
+<100contour_l2fm.png, id=85, 433.62pt x 289.08pt>
+File: 100contour_l2fm.png Graphic file (type png)
+<use 100contour_l2fm.png>
+Package pdftex.def Info: 100contour_l2fm.png  used on input line 286.
+(pdftex.def)             Requested size: 216.80946pt x 144.53964pt.
+
+Overfull \hbox (11.86287pt too wide) in paragraph at lines 286--287
+ [] 
+ []
+
+<100contour_RKHS.png, id=86, 433.62pt x 289.08pt>
+File: 100contour_RKHS.png Graphic file (type png)
+<use 100contour_RKHS.png>
+Package pdftex.def Info: 100contour_RKHS.png  used on input line 290.
+(pdftex.def)             Requested size: 216.80946pt x 144.53964pt.
+
+Overfull \hbox (11.86287pt too wide) in paragraph at lines 290--291
+ [] 
+ []
+
+<100contour_Hvar.png, id=87, 433.62pt x 289.08pt>
+File: 100contour_Hvar.png Graphic file (type png)
+<use 100contour_Hvar.png>
+Package pdftex.def Info: 100contour_Hvar.png  used on input line 294.
+(pdftex.def)             Requested size: 216.80946pt x 144.53964pt.
+
+Overfull \hbox (11.86287pt too wide) in paragraph at lines 294--295
+ [] 
+ []
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[8
+
+ <./100surface_mvar.png> <./100surface_l2fm.png> <./100surface_RKHS.png> <./100
+surface_Hvar.png>] [9 <./100contour_mvar.png> <./100contour_l2fm.png> <./100con
+tour_RKHS.png> <./100contour_Hvar.png>]
+<Betteraccuracy3.png, id=102, 1156.32pt x 722.7pt>
+File: Betteraccuracy3.png Graphic file (type png)
+<use Betteraccuracy3.png>
+Package pdftex.def Info: Betteraccuracy3.png  used on input line 305.
+(pdftex.def)             Requested size: 462.5198pt x 289.07487pt.
+
+Overfull \hbox (44.26613pt too wide) in paragraph at lines 305--306
+ [] 
+ []
+
+[10
+
+ <./Betteraccuracy3.png>]
+<accuracyMethodsSkin1.png, id=107, 1156.32pt x 722.7pt>
+File: accuracyMethodsSkin1.png Graphic file (type png)
+<use accuracyMethodsSkin1.png>
+Package pdftex.def Info: accuracyMethodsSkin1.png  used on input line 321.
+(pdftex.def)             Requested size: 462.5198pt x 289.07487pt.
+
+Overfull \hbox (257.57321pt too wide) in paragraph at lines 321--322
+ [] 
+ []
+
+<accuracyMethodsSkin3.png, id=108, 1156.32pt x 722.7pt>
+File: accuracyMethodsSkin3.png Graphic file (type png)
+<use accuracyMethodsSkin3.png>
+Package pdftex.def Info: accuracyMethodsSkin3.png  used on input line 325.
+(pdftex.def)             Requested size: 462.5198pt x 289.07487pt.
+
+Overfull \hbox (257.57321pt too wide) in paragraph at lines 325--326
+ [] 
+ []
+
+
+LaTeX Warning: Float too large for page by 64.064pt on input line 329.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[11
+
+] [12 <./accuracyMethodsSkin1.png> <./accuracyMethodsSkin3.png>]
+<accuracy2dim.png, id=117, 1156.32pt x 722.7pt>
+File: accuracy2dim.png Graphic file (type png)
+<use accuracy2dim.png>
+Package pdftex.def Info: accuracy2dim.png  used on input line 340.
+(pdftex.def)             Requested size: 462.5198pt x 289.07487pt.
+
+Overfull \hbox (257.57321pt too wide) in paragraph at lines 340--341
+ [] 
+ []
+
+<accuracy2dim5.png, id=118, 1156.32pt x 722.7pt>
+File: accuracy2dim5.png Graphic file (type png)
+<use accuracy2dim5.png>
+Package pdftex.def Info: accuracy2dim5.png  used on input line 344.
+(pdftex.def)             Requested size: 462.5198pt x 289.07487pt.
+
+Overfull \hbox (257.57321pt too wide) in paragraph at lines 344--345
+ [] 
+ []
+
+
+LaTeX Warning: Float too large for page by 64.064pt on input line 348.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[13
+
+] [14 <./accuracy2dim.png> <./accuracy2dim5.png>] [15
+
+] (./criteria.aux) ) 
 Here is how much of TeX's memory you used:
- 5683 strings out of 492982
- 82447 string characters out of 6134896
- 169413 words of memory out of 5000000
- 9069 multiletter control sequences out of 15000+600000
- 12437 words of font info for 50 fonts, out of 8000000 for 9000
+ 5742 strings out of 492982
+ 84468 string characters out of 6134896
+ 168433 words of memory out of 5000000
+ 9117 multiletter control sequences out of 15000+600000
+ 12744 words of font info for 51 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  41i,13n,39p,433b,331s stack positions out of 5000i,500n,10000p,200000b,80000s
-</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></us
-r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/shar
-e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx9.pfb></usr/share/texli
-ve/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/tex
-mf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dis
-t/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/share/texlive/texmf-dist/fonts
-/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texlive/texmf-dist/fonts/type1/
-public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/
-amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfont
-s/cm/cmr17.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cm
-r5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb><
-/usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/sha
-re/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/tex
-live/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb></usr/share/texlive/te
-xmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/share/texlive/texmf-dis
-t/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/texlive/texmf-dist/font
-s/type1/public/doublestroke/dsrom10.pfb></usr/share/texlive/texmf-dist/fonts/ty
-pe1/public/amsfonts/symbols/msbm10.pfb>
-Output written on criteria.pdf (7 pages, 444074 bytes).
+</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/
+cm/cmbx10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmb
+x12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx9.pfb
+></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr
+/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share
+/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/share/texliv
+e/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texlive/texmf
+-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/f
+onts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/ty
+pe1/public/amsfonts/cm/cmr17.pfb></usr/share/texlive/texmf-dist/fonts/type1/pub
+lic/amsfonts/cm/cmr5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsf
+onts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/
+cmr9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.p
+fb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb></us
+r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/share
+/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/texli
+ve/texmf-dist/fonts/type1/public/doublestroke/dsrom10.pfb></usr/share/texlive/t
+exmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
+Output written on criteria.pdf (15 pages, 1005523 bytes).
 PDF statistics:
- 146 PDF objects out of 1000 (max. 8388607)
- 76 compressed objects within 1 object stream
+ 191 PDF objects out of 1000 (max. 8388607)
+ 93 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 112 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 162 words of extra memory for PDF output out of 10000 (max. 10000000)
 

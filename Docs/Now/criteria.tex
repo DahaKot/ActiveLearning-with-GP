@@ -329,22 +329,23 @@ On the figure \ref{Skinacc} you can see how accuracy of the certain method depen
 \end{figure}
 
 \clearpage
-\subsection{Haberman}
+\subsection{HTRU2}
 
-The Haberman dataset contains cases from a study that was conducted between 1958 and 1970 at the University of Chicago's Billings Hospital on the survival of patients who had undergone surgery for breast cancer.
+HTRU2 is a data set which describes a sample of pulsar candidates collected during the High Time Resolution Universe Survey (South).
 \\
-On the plots you can see how accuracy of the certain method depends on the size of training dataset.
+
+Here the legitimate pulsar examples are a minority positive class, and spurious examples the majority negative class. At present multi-class labels are unavailable, given the costs associated with data annotation.
+\\
+The data set shared here contains 16,259 spurious examples caused by RFI/noise, and 1,639 real pulsar examples. These examples have all been checked by human annotators. 
+\\ 
+We used total 1000 points from the dataset, test dataset containd 500 points, and the training dataset changed from 10 to 500 points.
 
 \begin{figure}[h]
 \begin{minipage}[c]{0.49\linewidth}
-\center{\includegraphics[scale = 0.4]{accuracy2dim.png}} Size of train datset changes from 10 to 600 points.
-\end{minipage}
-\vfill
-\begin{minipage}[c]{0.49\linewidth}
-\center{\includegraphics[scale = 0.4]{accuracy2dim5.png}} Size of train datset changes from 10 to 300 (600 / 2) points.
+\center{\includegraphics[scale = 0.8]{accuracy4.png}} Size of train datset changes from 10 to 600 points.
 \end{minipage}
 \caption{Compartion of different approaches to classification task.}
-\label{Skin}
+\label{HTRU}
 \end{figure}
 
 \subsection{Conclusions}

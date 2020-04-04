@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2019.7.18)  4 APR 2020 12:41
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2019.7.18)  4 APR 2020 20:02
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -810,42 +810,30 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 [11
 
 ] [12 <./accuracyMethodsSkin1.png> <./accuracyMethodsSkin3.png>]
-<accuracy2dim.png, id=117, 1156.32pt x 722.7pt>
-File: accuracy2dim.png Graphic file (type png)
-<use accuracy2dim.png>
-Package pdftex.def Info: accuracy2dim.png  used on input line 340.
-(pdftex.def)             Requested size: 462.5198pt x 289.07487pt.
+Underfull \hbox (badness 10000) in paragraph at lines 334--336
 
-Overfull \hbox (257.57321pt too wide) in paragraph at lines 340--341
- [] 
  []
 
-<accuracy2dim5.png, id=118, 1156.32pt x 722.7pt>
-File: accuracy2dim5.png Graphic file (type png)
-<use accuracy2dim5.png>
-Package pdftex.def Info: accuracy2dim5.png  used on input line 344.
-(pdftex.def)             Requested size: 462.5198pt x 289.07487pt.
+<accuracy4.png, id=117, 433.62pt x 289.08pt>
+File: accuracy4.png Graphic file (type png)
+<use accuracy4.png>
+Package pdftex.def Info: accuracy4.png  used on input line 345.
+(pdftex.def)             Requested size: 346.89647pt x 231.2643pt.
 
-Overfull \hbox (257.57321pt too wide) in paragraph at lines 344--345
+Overfull \hbox (141.94987pt too wide) in paragraph at lines 345--346
  [] 
  []
-
-
-LaTeX Warning: Float too large for page by 64.064pt on input line 348.
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
 
 [13
 
-] [14 <./accuracy2dim.png> <./accuracy2dim5.png>] [15
+ <./accuracy4.png>] [14
 
 ] (./criteria.aux) ) 
 Here is how much of TeX's memory you used:
- 5742 strings out of 492982
- 84468 string characters out of 6134896
+ 5737 strings out of 492982
+ 84349 string characters out of 6134896
  168433 words of memory out of 5000000
- 9117 multiletter control sequences out of 15000+600000
+ 9113 multiletter control sequences out of 15000+600000
  12744 words of font info for 51 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  41i,13n,39p,433b,331s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -867,10 +855,10 @@ r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/share
 /texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/texli
 ve/texmf-dist/fonts/type1/public/doublestroke/dsrom10.pfb></usr/share/texlive/t
 exmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on criteria.pdf (15 pages, 1005523 bytes).
+Output written on criteria.pdf (14 pages, 925145 bytes).
 PDF statistics:
- 191 PDF objects out of 1000 (max. 8388607)
- 93 compressed objects within 1 object stream
+ 186 PDF objects out of 1000 (max. 8388607)
+ 91 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 162 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 157 words of extra memory for PDF output out of 10000 (max. 10000000)
 

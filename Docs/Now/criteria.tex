@@ -12,6 +12,7 @@
 \usepackage{geometry}
 \usepackage{easyeqn}
 \usepackage{bbm}
+\usepackage{multirow}
 
 \pagestyle{plain}
 
@@ -318,11 +319,11 @@ On the figure \ref{Skinacc} you can see how accuracy of the certain method depen
 
 \begin{figure}[h]
 \begin{minipage}[c]{0.49\linewidth}
-\center{\includegraphics[scale = 0.4]{accuracyMethodsSkin1.png}} Size of train datset changes from 20 to 500 points.
+\center{\includegraphics[scale = 0.4]{accuracyMethodsSkin4.png}} Size of train datset changes from 10 to 250 points.
 \end{minipage}
 \vfill
 \begin{minipage}[c]{0.49\linewidth}
-\center{\includegraphics[scale = 0.4]{accuracyMethodsSkin3.png}} Size of train datset changes from 20 to 166 (500 / 3) points.
+\center{\includegraphics[scale = 0.4]{accuracySkin1.png}} Size of train datset changes from 10 to 1000 points.
 \end{minipage}
 \caption{Compartion of different approaches to classification task on skin dataset.}
 \label{Skinacc}
@@ -342,11 +343,27 @@ We used total 1000 points from the dataset, test dataset containd 500 points, an
 
 \begin{figure}[h]
 \begin{minipage}[c]{0.49\linewidth}
-\center{\includegraphics[scale = 0.8]{accuracy4.png}} Size of train datset changes from 10 to 600 points.
+\center{\includegraphics[scale = 0.4]{accuracyHTRUGP1.png}} Size of train datset changes from 10 to 500 points.
 \end{minipage}
 \caption{Compartion of different approaches to classification task.}
 \label{HTRU}
 \end{figure}
+
+\subsection{Time comparsion}
+
+\begin{tabular}{|c|c|c|c|c|c|c|c|c|}
+ \hline
+ \cline{5-9}
+& & & & \multicolumn{5}{ c| }{Score Times} \\ \cline{5-9}
+ \hline
+ Dataset Name & Dimensionality & Start train size & End train size &
+ rand & mvar & RKHS & Hvar & l2fm \\
+ \hline
+ TwoDim & 2 & 10 & 1000 & 544   & 501   & 488   & 487   & 512   \\
+ HTRU2  & 8 & 10 & 500  & 33.23 & 33.32 & 33.98 & 34.92 & 37.43 \\
+ Skin   & 3 & 10 & 1000 & 696   & 668   & 627   & 630   & 633   \\
+ \hline
+\end{tabular}
 
 \subsection{Conclusions}
 From the experiments we certainly can say that choosing new point in active learning process by the maximum of variance leads to worse quality. Other methods perfom better or at least as well as random sampling.

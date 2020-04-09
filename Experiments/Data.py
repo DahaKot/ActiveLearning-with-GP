@@ -295,3 +295,28 @@ class Skin(Data):
         self.y_U, self.y_train, self.y_test = self.y_U - 1, self.y_train - 1, self.y_test - 1
 
         return self.U, self.X_train, self.y_U, self.y_train, self.X_test, self.y_test 
+    
+class Transfusion(Data):
+
+    def __init__(self, total_n, start_n, end_n, test_n):
+        super(Transfusion, self).__init__(total_n, start_n, end_n, test_n, 4)
+    
+    def generate_data(self, draw_data, exp_name):
+        dataset = pd.read_csv("transfusion.data", header = 0, delimiter = ",",
+                              names = ["0", "1", "2", "3", "class"])
+        
+        self.Y = dataset["class"].values
+        self.X = dataset[["0", "1", "2", "3"]].values
+
+        self.U, self.X_train, self.y_U, self.y_train = train_test_split(
+                                                        self.X, 
+                                                        self.Y, 
+                                                        test_size = self.start_n,
+                                                        train_size = self.end_n + self.test_n)
+        
+        self.U, self.X_test, self.y_U, self.y_test = train_test_split(
+                                                        self.U, 
+                                                        self.y_U, 
+                                                        test_size = self.test_n)
+
+        return self.U, self.X_train, self.y_U, self.y_train, self.X_test, self.y_test 

@@ -31,11 +31,13 @@ class ExperimentInfo(nn.Module):
         self.update_freq = update_freq_
         self.comparsion = comparsion_
 
-        # for every score save train dataset, accuracies and scores (on the grid)
+        # for every score save train dataset, accuracies and scores (on the grid), time of the experiment
         self.per_score_acc = {}
+        self.times = {}
         
         for score_name in ("rand", "mvar", "sqsm", "RKHS", "Hvar", "l2fm"):
             self.per_score_acc[score_name] = []
+            self.times[score_name] = 0
                 
         # create folder structure
         os.mkdir("./Results/" + self.name + "/accuracies")

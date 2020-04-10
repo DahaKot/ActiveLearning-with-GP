@@ -1,10 +1,10 @@
 total_n = 1000
-start_n = 10
+start_n = 50
 end_n   = 500
 test_n  = 500
 ndim    = 8
-time rand = 33.2286450863
-time mvar = 33.3251171112
-time RKHS = 33.9801859856
-time Hvar = 34.9299018383
-time l2fm = 37.4357848167
+time rand = 0.0133771896362
+time mvar = 0.574551105499
+time RKHS = 1.16424655914
+time Hvar = 1.06191468239
+time l2fm = 2.16879987717

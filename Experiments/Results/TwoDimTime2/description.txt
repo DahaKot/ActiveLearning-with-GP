@@ -1,0 +1,10 @@
+total_n = 1000
+start_n = 50
+end_n   = 500
+test_n  = 500
+ndim    = 2
+time rand = 0.0156676769257
+time mvar = 0.478102445602
+time RKHS = 0.968741178513
+time Hvar = 0.881611824036
+time l2fm = 1.75024700165
